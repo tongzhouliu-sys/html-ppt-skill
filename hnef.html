@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="corporate-clean">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>海南自贸港跨境金融 · EF账户实务全景</title>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" id="theme-link" href="assets/themes/corporate-clean.css">
+<link rel="stylesheet" href="assets/animations/animations.css">
+<style>
+.tpl-hnef{
+  --hn-navy:#0c2340;--hn-gold:#c9a227;--hn-blue:#1a5fb4;--hn-teal:#0d7377;
+}
+.tpl-hnef .slide{padding:60px 80px;overflow:hidden}
+.tpl-hnef .slide.cover{display:flex;flex-direction:column;justify-content:center}
+.tpl-hnef .slide::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 50% at 100% 0%,rgba(26,95,180,.06),transparent 60%);
+}
+.tpl-hnef .slide>*{position:relative;z-index:1}
+.tpl-hnef .h1{font-family:var(--font-display);font-size:62px;line-height:1.08;font-weight:800;letter-spacing:-.02em;color:var(--hn-navy)}
+.tpl-hnef .h2{font-size:40px;line-height:1.12;font-weight:800;letter-spacing:-.02em;color:var(--hn-navy)}
+.tpl-hnef .kicker{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--hn-blue)}
+.tpl-hnef .mod-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:36px;height:36px;margin-right:8px;
+  font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:800;
+  color:#fff;background:linear-gradient(135deg,var(--hn-navy),var(--hn-blue));
+  border-radius:8px;vertical-align:middle;
+}
+.tpl-hnef .gradient-text{background:linear-gradient(135deg,var(--hn-navy),var(--hn-blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+.tpl-hnef .gold-line{width:80px;height:3px;margin:16px 0 24px;background:linear-gradient(90deg,var(--hn-gold),transparent)}
+.tpl-hnef .org-tag{display:inline-flex;padding:5px 12px;border-radius:999px;font-size:11px;font-weight:600;background:rgba(26,95,180,.08);color:var(--hn-blue);border:1px solid rgba(26,95,180,.2)}
+.tpl-hnef .stat-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}
+.tpl-hnef .stat-chip{display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--border);font-size:12px;color:var(--text-2)}
+.tpl-hnef .stat-chip b{color:var(--hn-blue);font-size:18px;font-weight:700}
+.tpl-hnef .card{border:1px solid var(--border);background:var(--surface)}
+.tpl-hnef .card-accent{border-top:3px solid var(--hn-gold)}
+.tpl-hnef .card-blue{border-top:3px solid var(--hn-blue)}
+.tpl-hnef .rule-card{padding:16px 18px;border-radius:var(--radius-lg);background:var(--surface);border:1px solid var(--border)}
+.tpl-hnef .rule-card h4{font-size:13px;color:var(--hn-blue);margin:0 0 6px;font-weight:700}
+.tpl-hnef .rule-card p{margin:0;font-size:12px;color:var(--text-2);line-height:1.5}
+.tpl-hnef .acct-type{padding:14px 16px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--border);text-align:center}
+.tpl-hnef .acct-type .code{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:800;color:var(--hn-navy);margin-bottom:4px}
+.tpl-hnef .acct-type h4{font-size:12px;margin:0 0 4px;color:var(--text-1)}
+.tpl-hnef .acct-type p{margin:0;font-size:11px;color:var(--text-2);line-height:1.4}
+.tpl-hnef .scene-item{display:flex;gap:14px;padding:14px 16px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--border);margin-bottom:8px}
+.tpl-hnef .scene-item .n{flex:none;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;background:var(--hn-navy)}
+.tpl-hnef .scene-item b{display:block;font-size:13px;color:var(--text-1);margin-bottom:3px}
+.tpl-hnef .scene-item p{margin:0;font-size:12px;color:var(--text-2);line-height:1.45}
+.tpl-hnef .tax-big{font-size:48px;font-weight:900;color:var(--hn-gold);line-height:1}
+.tpl-hnef .mini-table{width:100%;font-size:12px;border-collapse:collapse;margin-top:10px}
+.tpl-hnef .mini-table th,.tpl-hnef .mini-table td{padding:7px 10px;text-align:left;border-bottom:1px solid var(--border)}
+.tpl-hnef .mini-table th{color:var(--text-3);font-size:11px;font-weight:600}
+.tpl-hnef .adv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tpl-hnef .adv-item{padding:12px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--border);text-align:center}
+.tpl-hnef .adv-item .icon{font-size:20px;margin-bottom:6px}
+.tpl-hnef .adv-item h4{font-size:11px;margin:0 0 4px;color:var(--hn-navy)}
+.tpl-hnef .adv-item p{margin:0;font-size:10px;color:var(--text-2);line-height:1.4}
+.tpl-hnef .formula-box{margin-top:12px;padding:14px 18px;border-radius:var(--radius);background:rgba(26,95,180,.06);border:1px solid rgba(26,95,180,.15);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--hn-navy);line-height:1.6}
+.tpl-hnef .warn-list{font-size:12px;color:var(--text-2);margin:8px 0 0;padding-left:16px;line-height:1.7}
+.tpl-hnef .quote-box{margin-top:20px;padding:20px 24px;border-left:4px solid var(--hn-gold);background:rgba(201,162,39,.06);border-radius:0 var(--radius-lg) var(--radius-lg) 0}
+.tpl-hnef .quote-box p{margin:0;font-size:15px;line-height:1.65;color:var(--text-1);font-style:italic}
+</style>
+</head>
+<body class="tpl-hnef" data-themes="corporate-clean,pitch-deck-vc,academic-paper,editorial-serif,minimal-white" data-theme-base="assets/themes/">
+
+<div class="deck">
+
+  <!-- Cover -->
+  <section class="slide cover" data-title="Cover">
+    <span class="org-tag anim-fade-up" data-anim="fade-up">栖梦控股集团 · 培训讲义 · 2026.02.27</span>
+    <p class="kicker mt-m anim-fade-up" data-anim="fade-up">Hainan FTP · Cross-Border Finance</p>
+    <div class="gold-line"></div>
+    <h1 class="h1 anim-fade-up" data-anim="fade-up">破局与重构<br><span class="gradient-text">海南自贸港跨境金融</span><br>EF 账户实务全景</h1>
+    <p class="lede mt-m" style="max-width:620px;font-size:16px;color:var(--text-2)">企业 CFO、资金总监、跨国集团财务团队专属深度培训方案</p>
+    <div class="stat-row anim-stagger-list" data-anim-target>
+      <div class="stat-chip"><span>核心主题</span><b>EF</b><span>账户</span></div>
+      <div class="stat-chip"><span>配套</span><b>资金池</b></div>
+      <div class="stat-chip"><span>基础设施</span><b>mBridge</b></div>
+    </div>
+    <div class="deck-footer"><span class="dim2">EF ACCOUNT TRAINING · INDUSTRIAL BANK · HAIKOU</span><span class="slide-number" data-current="1" data-total="7"></span></div>
+    <div class="notes">各位 CFO 和资金总监好，今天培训海南自贸港 EF 账户实务全景。涵盖政策解析、五大应用场景、资金池运营中心、货币桥系统，以及合规落地指南。</div>
+  </section>
+
+  <!-- Module 01 -->
+  <section class="slide" data-title="EF政策">
+    <p class="kicker"><span class="mod-num">01</span>EF 账户政策全景</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">连接在岸与离岸的「超级路由器」</h2>
+    <div class="grid g3 mt-m anim-stagger-list" data-anim-target>
+      <div class="rule-card"><h4>一线放开</h4><p>与境外/OSA/NRA 账户凭指令直接划转，无需事前审批</p></div>
+      <div class="rule-card"><h4>二线管住</h4><p>与境内普通账户视同跨境管理，需国际收支申报</p></div>
+      <div class="rule-card"><h4>同名渗透</h4><p>EFE 与同名境内账户额度内双向划转，仅限人民币</p></div>
+    </div>
+    <div class="grid g4 mt-m">
+      <div class="acct-type"><div class="code">EFE</div><h4>港内机构</h4><p>海南注册满 6 个月 · 无重大违规</p></div>
+      <div class="acct-type"><div class="code">EFN</div><h4>境外机构</h4><p>境外注册满 1 年 · 三反合规</p></div>
+      <div class="acct-type"><div class="code">EFF</div><h4>境外个人</h4><p>在琼工作生活 · 生活实需</p></div>
+      <div class="acct-type"><div class="code">EFU</div><h4>同业机构</h4><p>金融机构 · 同业拆借</p></div>
+    </div>
+    <div class="formula-box">同名渗透额度上限 = 上年度所有者权益 × 宏观审慎参数（1）× 杠杆率（1）— 当前最高 100% 人民币双向调拨</div>
+    <div class="deck-footer"><span class="dim2">01 · 本外币合一 + 离岸汇率 + 突破额度限制</span><span class="slide-number" data-current="2" data-total="7"></span></div>
+    <div class="notes">EF 账户本质是超级路由器。记住三大法则：一线自由、二线跨境管理、同名有限渗透。四种账户类型 EFE/EFN/EFF/EFU 对应不同主体。渗透额度公式要记牢。</div>
+  </section>
+
+  <!-- Module 02 -->
+  <section class="slide" data-title="应用场景">
+    <p class="kicker"><span class="mod-num">02</span>五大核心应用场景</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">降本 · 增效 · 创收</h2>
+    <div class="mt-m anim-stagger-list" data-anim-target>
+      <div class="scene-item"><span class="n">1</span><div><b>FICC 增值 — CNH 离岸汇率套利</b><p>适用 CNH 无需用途证明 · 人民币掉期 3M 超额 +74bp · 美元双币 1Y +78bp</p></div></div>
+      <div class="scene-item"><span class="n">2</span><div><b>供应链开证提速 — 1 周 → 2–3 天</b><p>本外币合一 · 在线审核贸易背景 · EFN 离岸汇率锁定成本</p></div></div>
+      <div class="scene-item"><span class="n">3</span><div><b>跨境融资降维 — 免备案免登记</b><p>免发改委外债备案 · 免内保外贷登记 · 突破投注差额度限制</p></div></div>
+      <div class="scene-item"><span class="n">4</span><div><b>境外放款极简 — 额度 50% → 100%</b><p>签署协议直接汇出 · 所有者权益 2 亿可放款 2 亿（传统仅 1 亿）</p></div></div>
+      <div class="scene-item"><span class="n">5</span><div><b>远期结售汇 — 免 20% 风险准备金</b><p>分账核算走 CNH 平盘 · 节省 600+ 点对冲成本</p></div></div>
+    </div>
+    <div class="deck-footer"><span class="dim2">02 · 五大场景 · 均有传统 vs EF 方案对比</span><span class="slide-number" data-current="3" data-total="7"></span></div>
+    <div class="notes">五大场景是培训核心。FICC 用 CNH 套利，开证从一周缩到两三天，跨境融资免备案是突破性优势，境外放款额度翻倍，远期免风险准备金直接降成本。</div>
+  </section>
+
+  <!-- Module 03 -->
+  <section class="slide" data-title="资金池">
+    <p class="kicker"><span class="mod-num">03</span>特色资金池与运营中心</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">跨国集团排兵布阵的「中军大帐」</h2>
+    <div class="grid g3 mt-l anim-stagger-list" data-anim-target>
+      <div class="card card-accent" style="padding:18px;text-align:center"><div class="tax-big">15%</div><p class="dim" style="font-size:12px;margin:6px 0 0">企业所得税（标准 25%）</p></div>
+      <div class="card card-accent" style="padding:18px;text-align:center"><div class="tax-big">免征</div><p class="dim" style="font-size:12px;margin:6px 0 0">境外直接投资所得</p></div>
+      <div class="card card-accent" style="padding:18px;text-align:center"><div class="tax-big">15%</div><p class="dim" style="font-size:12px;margin:6px 0 0">高端人才个税封顶</p></div>
+    </div>
+    <div class="grid g2 mt-m">
+      <div class="card card-blue" style="padding:16px"><h4 style="font-size:13px">跨国公司资金池 3.0</h4><ul class="warn-list"><li>错币种借贷 · 经常项目跨境支付</li><li>自行决定外债/境外放款归集比例</li><li>简化备案 · 集中收付</li></ul><p class="dim" style="font-size:11px;margin:8px 0 0">门槛：境内收支≥70亿 · 营收≥100亿</p></div>
+      <div class="card card-blue" style="padding:16px"><h4 style="font-size:13px">跨境资金集中运营中心</h4><ul class="warn-list"><li>15% 企税 + ODI 收益免税叠加</li><li>员工个税 15% · 子女入学/购房便利</li><li>成员企业 ≥3 家 · 3 项核心业务</li></ul><p class="dim" style="font-size:11px;margin:8px 0 0">门槛：实缴≥1亿 · 日均存款≥3亿</p></div>
+    </div>
+    <div class="deck-footer"><span class="dim2">03 · 须满足「实质性运营」合规红线</span><span class="slide-number" data-current="4" data-total="7"></span></div>
+    <div class="notes">资金池和运营中心是集团级布局。三重税收优惠：15% 企税、ODI 免税、个税封顶。但实质性运营是红线，不能注册空壳。</div>
+  </section>
+
+  <!-- Module 04 -->
+  <section class="slide" data-title="mBridge">
+    <p class="kicker"><span class="mod-num">04</span>货币桥系统 mBridge</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">颠覆 SWIFT + 代理行模式</h2>
+    <p class="lede" style="font-size:14px;color:var(--text-2)">人行 · 港金管局 · 泰央行 · 阿联酋央行联合打造的多边 CBDC 跨境支付基础设施</p>
+    <div class="grid g3 mt-m anim-stagger-list" data-anim-target>
+      <div class="rule-card"><h4>🔒 无损原则</h4><p>CBDC 互联互通 · PvP 同步交收 · 消除结算风险</p></div>
+      <div class="rule-card"><h4>⚖️ 合规原则</h4><p>信息流与资金流匹配 · AML/CFT 监管</p></div>
+      <div class="rule-card"><h4>🔗 互通原则</h4><p>CBDC 与传统账户对接 · 新旧系统平滑过渡</p></div>
+    </div>
+    <div class="adv-grid mt-m">
+      <div class="adv-item"><div class="icon">⚡</div><h4>秒级清算</h4><p>7×24 · RTGS 全额实时</p></div>
+      <div class="adv-item"><div class="icon">🔗</div><h4>去中间化</h4><p>PvP 点对点 · 无中间行</p></div>
+      <div class="adv-item"><div class="icon">🔐</div><h4>数据隐私</h4><p>DLT · 仅相关方可见</p></div>
+      <div class="adv-item"><div class="icon">🌐</div><h4>多端接入</h4><p>数字钱包 + 银行账户</p></div>
+      <div class="adv-item"><div class="icon">💰</div><h4>降低成本</h4><p>免 SWIFT 费 · 压缩汇差</p></div>
+      <div class="adv-item"><div class="icon">🇨🇳</div><h4>人民币国际化</h4><p>降低 SWIFT 依赖</p></div>
+    </div>
+    <div class="deck-footer"><span class="dim2">04 · 兴业接入 · CNY/HKD/THB/AED · CNDCEP</span><span class="slide-number" data-current="5" data-total="7"></span></div>
+    <div class="notes">货币桥是 CBDC 层面的系统性创新。六大优势：秒级清算、去中间化、隐私保护、多端接入、降成本、推人民币国际化。兴业银行已接入，支持 CNY 和 HKD。</div>
+  </section>
+
+  <!-- Module 05 -->
+  <section class="slide" data-title="合规">
+    <p class="kicker"><span class="mod-num">05</span>企业行动指南与合规风控</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">布局决策三问 + 合规红线</h2>
+    <div class="grid g3 mt-l anim-stagger-list" data-anim-target>
+      <div class="card card-accent" style="padding:16px"><h4 style="font-size:13px">📦 看业务</h4><p class="dim" style="font-size:12px;margin:6px 0 0">大量跨境收支 · 进出口 · 海外工程 · ODI？</p></div>
+      <div class="card card-accent" style="padding:16px"><h4 style="font-size:13px">⚠ 看痛点</h4><p class="dim" style="font-size:12px;margin:6px 0 0">外债额度 · 放款审批慢 · 套保成本高 · 多账户繁琐？</p></div>
+      <div class="card card-accent" style="padding:16px"><h4 style="font-size:13px">🏗 看架构</h4><p class="dim" style="font-size:12px;margin:6px 0 0">是否设立运营中心/区域财务公司 · 成员≥3 家？</p></div>
+    </div>
+    <div class="grid g3 mt-m">
+      <div class="rule-card"><h4>🔍 展业三原则</h4><p>AML/CFT/ABFT 审核不放松 · 可疑交易及时报告</p></div>
+      <div class="rule-card"><h4>📋 事中事后抽查</h4><p>ODI 项目定期核查核准备案手续</p></div>
+      <div class="rule-card"><h4>🚫 真实性红线</h4><p>严禁虚假贸易 · 非法资本转移 · 炒作房/证</p></div>
+    </div>
+    <div class="card mt-m" style="padding:14px 18px;background:rgba(26,95,180,.04)"><p class="dim" style="margin:0;font-size:13px"><b style="color:var(--hn-navy)">行动路径：</b>评估匹配度 → 准备开户材料 → 设计账户架构 → 分阶段接入（EF → 资金池 → 运营中心）</p></div>
+    <div class="deck-footer"><span class="dim2">05 · 封关前充分布局 · 抢占政策红利期</span><span class="slide-number" data-current="6" data-total="7"></span></div>
+    <div class="notes">布局前先回答三问。合规上：三反审核、ODI 抽查、真实性红线不能碰。建议封关前分阶段接入，从 EF 账户起步，逐步升级到资金池和运营中心。</div>
+  </section>
+
+  <!-- Conclusion -->
+  <section class="slide cover" data-title="Conclusion">
+    <p class="kicker anim-fade-up" data-anim="fade-up">Conclusion</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">战略跳板，而非简单<span class="gradient-text">政策洼地</span></h2>
+    <div class="quote-box mt-l anim-fade-up" data-anim="fade-up">
+      <p>海南自贸港 EF 账户及配套设施，是企业实现资金跨境自由化、汇率管理市场化、集团财资集约化的战略跳板。</p>
+    </div>
+    <div class="grid g3 mt-l anim-stagger-list" data-anim-target>
+      <div class="card card-accent" style="padding:16px;text-align:center"><h4 style="font-size:13px">EF 账户</h4><p class="dim" style="font-size:12px;margin:6px 0 0">单兵利器</p></div>
+      <div class="card card-accent" style="padding:16px;text-align:center"><h4 style="font-size:13px">资金池 3.0</h4><p class="dim" style="font-size:12px;margin:6px 0 0">集团排兵</p></div>
+      <div class="card card-accent" style="padding:16px;text-align:center"><h4 style="font-size:13px">mBridge</h4><p class="dim" style="font-size:12px;margin:6px 0 0">支付基础设施</p></div>
+    </div>
+    <div class="deck-footer"><span class="dim2">栖梦控股集团 · 2026 培训材料 · ← → 翻页 · S 演讲者模式</span><span class="slide-number" data-current="7" data-total="7"></span></div>
+    <div class="notes">总结：EF 不是政策洼地而是战略跳板。建议尽早联合主办银行做架构诊断，封关前充分布局。谢谢大家。</div>
+  </section>
+
+</div>
+<script src="assets/runtime.js"></script>
+</body>
+</html>
