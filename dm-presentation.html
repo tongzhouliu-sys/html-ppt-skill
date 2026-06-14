@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="pitch-deck-vc">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI短剧全链路商业化 · 内部策划书 V2</title>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" id="theme-link" href="assets/themes/pitch-deck-vc.css">
+<link rel="stylesheet" href="assets/animations/animations.css">
+<style>
+.tpl-dm-pitch{
+  --dm-accent:#0070f3;--dm-purple:#7928ca;--dm-pink:#ff4ecb;
+}
+.tpl-dm-pitch .slide{padding:72px 96px;overflow:hidden}
+.tpl-dm-pitch .slide.cover{display:flex;flex-direction:column;justify-content:center}
+.tpl-dm-pitch .cover-bg{position:absolute;inset:0;background:var(--grad-soft);z-index:0}
+.tpl-dm-pitch .cover-blob{position:absolute;right:-120px;top:-120px;width:520px;height:520px;border-radius:50%;background:var(--grad);opacity:.25;filter:blur(40px);z-index:0}
+.tpl-dm-pitch .slide>*{position:relative;z-index:1}
+.tpl-dm-pitch .confidential{
+  display:inline-flex;align-items:center;gap:8px;padding:6px 14px;
+  border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.08em;
+  background:rgba(238,0,0,.08);color:#c00;border:1px solid rgba(238,0,0,.2);
+}
+.tpl-dm-pitch .h1{font-size:64px;line-height:1.06;font-weight:900;letter-spacing:-.03em}
+.tpl-dm-pitch .h2{font-size:42px;line-height:1.12;font-weight:800;letter-spacing:-.025em}
+.tpl-dm-pitch .kicker{color:var(--dm-accent);font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.tpl-dm-pitch .sec-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:34px;margin-right:8px;
+  font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:800;
+  color:#fff;background:var(--grad);border-radius:8px;vertical-align:middle;
+}
+.tpl-dm-pitch .gradient-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tpl-dm-pitch .flow-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:20px}
+.tpl-dm-pitch .flow-step{
+  padding:10px 14px;border-radius:var(--radius);font-size:12px;font-weight:600;
+  background:var(--surface);border:1px solid var(--border);color:var(--text-1);
+}
+.tpl-dm-pitch .flow-arrow{color:var(--text-3);font-size:18px}
+.tpl-dm-pitch .layer-card{
+  padding:16px 18px;border-radius:var(--radius-lg);
+  background:var(--surface);border:1px solid var(--border);
+  border-left:4px solid var(--dm-accent);
+}
+.tpl-dm-pitch .layer-card.t2{border-left-color:var(--dm-purple)}
+.tpl-dm-pitch .layer-card.t3{border-left-color:var(--good,#0cce6b)}
+.tpl-dm-pitch .layer-card h4{margin:0 0 4px;font-size:13px;color:var(--dm-accent)}
+.tpl-dm-pitch .layer-card.t2 h4{color:var(--dm-purple)}
+.tpl-dm-pitch .layer-card.t3 h4{color:var(--good,#0cce6b)}
+.tpl-dm-pitch .layer-card p{margin:0;font-size:12px;color:var(--text-2);line-height:1.5}
+.tpl-dm-pitch .layer-card b{font-size:15px;color:var(--text-1)}
+.tpl-dm-pitch .dim-table{width:100%;font-size:12px;border-collapse:collapse;margin-top:14px}
+.tpl-dm-pitch .dim-table th,.tpl-dm-pitch .dim-table td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--border)}
+.tpl-dm-pitch .dim-table th{color:var(--text-3);font-weight:600;font-size:11px}
+.tpl-dm-pitch .rating-pill{
+  display:inline-block;padding:4px 10px;border-radius:6px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;margin-right:6px;margin-top:6px;
+}
+.tpl-dm-pitch .rating-pill.sp{background:#fef3c7;color:#92400e}
+.tpl-dm-pitch .rating-pill.s{background:#dbeafe;color:#1e40af}
+.tpl-dm-pitch .rating-pill.a{background:#dcfce7;color:#166534}
+.tpl-dm-pitch .rating-pill.b{background:var(--surface-2);color:var(--text-3)}
+.tpl-dm-pitch .moat-card{padding:16px 18px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--border)}
+.tpl-dm-pitch .moat-card .icon{font-size:22px;margin-bottom:8px}
+.tpl-dm-pitch .moat-card h4{margin:0 0 6px;font-size:13px}
+.tpl-dm-pitch .moat-card p{margin:0;font-size:12px;color:var(--text-2);line-height:1.45}
+.tpl-dm-pitch .partner-chip{
+  padding:14px 16px;border-radius:var(--radius);background:var(--surface);
+  border:1px solid var(--border);text-align:center;
+}
+.tpl-dm-pitch .partner-chip .icon{font-size:24px;margin-bottom:6px}
+.tpl-dm-pitch .partner-chip h4{margin:0 0 4px;font-size:12px}
+.tpl-dm-pitch .partner-chip p{margin:0;font-size:11px;color:var(--text-2);line-height:1.4}
+.tpl-dm-pitch .task-item{display:flex;gap:12px;padding:12px 14px;border-radius:var(--radius);background:var(--surface-2);border:1px solid var(--border);margin-bottom:8px}
+.tpl-dm-pitch .task-item .n{flex:none;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;background:var(--grad)}
+.tpl-dm-pitch .task-item b{display:block;font-size:13px;margin-bottom:2px}
+.tpl-dm-pitch .task-item p{margin:0;font-size:12px;color:var(--text-2);line-height:1.4}
+.tpl-dm-pitch .role-card{padding:12px 14px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--border)}
+.tpl-dm-pitch .role-card h4{margin:0 0 4px;font-size:12px;color:var(--dm-accent)}
+.tpl-dm-pitch .role-card p{margin:0;font-size:11px;color:var(--text-2);line-height:1.4}
+.tpl-dm-pitch .metric-box{text-align:center;padding:20px;border-radius:var(--radius-lg);background:var(--grad-soft);border:1px solid var(--border)}
+.tpl-dm-pitch .metric-box .n{font-size:36px;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+.tpl-dm-pitch .metric-box .l{font-size:13px;color:var(--text-2);margin-top:6px}
+.tpl-dm-pitch .warn-box{margin-top:16px;padding:14px 18px;border-radius:var(--radius);background:#fff8e6;border:1px solid #fde68a;font-size:13px;color:#92400e}
+.tpl-dm-pitch .stat-chip{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:var(--surface);border:1px solid var(--border);font-size:13px;color:var(--text-2)}
+.tpl-dm-pitch .stat-chip b{color:var(--dm-accent);font-size:16px}
+.tpl-dm-pitch .card-accent{border-top:3px solid var(--dm-accent)}
+</style>
+</head>
+<body class="tpl-dm-pitch" data-themes="pitch-deck-vc,corporate-clean,swiss-grid,minimal-white,aurora" data-theme-base="assets/themes/">
+
+<div class="deck">
+
+  <!-- Cover -->
+  <section class="slide cover" data-title="Cover">
+    <div class="cover-bg"></div>
+    <div class="cover-blob"></div>
+    <span class="confidential anim-fade-up" data-anim="fade-up">🔒 内部策划文件 · 仅限内部传阅</span>
+    <p class="kicker mt-m anim-fade-up" data-anim="fade-up">AI Drama · Full-Stack Commercialization</p>
+    <h1 class="h1 mt-m anim-fade-up" data-anim="fade-up">AI短剧<span class="gradient-text">全链路</span><br>商业化内部策划书</h1>
+    <p class="lede mt-m" style="max-width:680px;font-size:18px;color:var(--text-2)">从剧本采购到全球分发的完整商业闭环 · 含合作方权益与学校合作专项方案</p>
+    <div class="flow-row mt-l anim-stagger-list" data-anim-target>
+      <span class="stat-chip"><b>V2.0</b> 内部重构版</span>
+      <span class="stat-chip">核心定位 · <b>全链路内容服务商</b></span>
+      <span class="stat-chip">策略 · <b>合规优先 · 多方共赢</b></span>
+    </div>
+    <div class="deck-footer"><span class="dim2">AI短剧全链路商业化 · 内部策划书</span><span class="slide-number" data-current="1" data-total="10"></span></div>
+    <div class="notes">各位好，这份内部策划书 V2.0 梳理了 AI 短剧从剧本采购到全球分发的完整商业闭环。接下来按九个章节逐一讲解：项目本质、评级系统、核心竞争力、合作方权益、学校合作、平台搭建、组织架构、投入规划和行业生态。</div>
+  </section>
+
+  <!-- 01 项目本质与收益 -->
+  <section class="slide" data-title="项目本质">
+    <p class="kicker"><span class="sec-num">01</span>项目本质与收益</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">内容工厂生意 · 五层递进现金流</h2>
+    <p class="lede" style="font-size:15px;color:var(--text-2)">采购合规剧本 → AI 批量制作 → 多平台分发变现 → 培训 + SaaS 向高校/代理商销售</p>
+    <div class="flow-row anim-stagger-list" data-anim-target>
+      <span class="flow-step">剧本采购</span><span class="flow-arrow">→</span>
+      <span class="flow-step">AI 制片</span><span class="flow-arrow">→</span>
+      <span class="flow-step">合规备案</span><span class="flow-arrow">→</span>
+      <span class="flow-step">多平台分发</span><span class="flow-arrow">→</span>
+      <span class="flow-step">五层变现</span>
+    </div>
+    <div class="grid g3 mt-l anim-stagger-list" data-anim-target>
+      <div class="layer-card"><h4>第一层 · 快速回款</h4><p><b>课程培训</b> 5,000–15,000元/期 · 签约即到款</p></div>
+      <div class="layer-card t2"><h4>第二层 · 稳定预测</h4><p><b>Token 算力差价</b> 20–40% 毛利 · 类 SaaS 收入</p></div>
+      <div class="layer-card"><h4>第三层 · 核心利润池</h4><p><b>国内平台分成</b> 单部 3–30万+ · 30–90天回款</p></div>
+      <div class="layer-card t2"><h4>第四层 · 海外高利润</h4><p><b>ReelShort 等</b> 单部 50–300万+ · 国内 5–10 倍</p></div>
+      <div class="layer-card t3"><h4>第五层 · 规模放大器</h4><p><b>B 端平台授权</b> 5–30万/套 · 高客单低频</p></div>
+    </div>
+    <div class="grid g3 mt-m">
+      <div class="card card-accent" style="padding:14px"><h4 style="font-size:12px">启动期</h4><p class="dim" style="font-size:12px;margin:4px 0 0">第一层+第二层 · 0-6月覆盖人力</p></div>
+      <div class="card card-accent" style="padding:14px"><h4 style="font-size:12px">中期利润</h4><p class="dim" style="font-size:12px;margin:4px 0 0">第三层+第四层 · 海外爆款覆盖成本</p></div>
+      <div class="card card-accent" style="padding:14px"><h4 style="font-size:12px">长期护城河</h4><p class="dim" style="font-size:12px;margin:4px 0 0">第五层+数据飞轮 · 系统级优势</p></div>
+    </div>
+    <div class="deck-footer"><span class="dim2">01 · 项目本质</span><span class="slide-number" data-current="2" data-total="10"></span></div>
+    <div class="notes">项目本质是一门内容工厂生意。五层收益从快到慢：培训费和 Token 差价最快回款，国内和海外平台分成是利润核心，B 端授权是长期护城河。启动期靠第一二层覆盖人力成本，中期靠内容分成起量。</div>
+  </section>
+
+  <!-- 02 AI剧本评级 -->
+  <section class="slide" data-title="AI评级">
+    <p class="kicker"><span class="sec-num">02</span>AI 剧本评级系统</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">智能选题 · 降低踩坑 · 数据飞轮</h2>
+    <div class="grid g3 mt-m anim-stagger-list" data-anim-target>
+      <div class="moat-card"><div class="icon">🎯</div><h4>提高命中率</h4><p>10 部里不足 2 部跑出来，AI 评级把经验判断变数据决策</p></div>
+      <div class="moat-card"><div class="icon">💰</div><h4>减少踩坑</h4><p>S 级保底 20–30 万，一次错误投产等于损失数十万</p></div>
+      <div class="moat-card"><div class="icon">📈</div><h4>数据优势</h4><p>投产收益反哺模型，越用越准，形成先发壁垒</p></div>
+    </div>
+    <table class="dim-table mt-m">
+      <tr><th>维度</th><th>权重</th><th>评估内容</th></tr>
+      <tr><td>商业转化潜力</td><td>30%</td><td>付费率、广告适合度、IP 延伸</td></tr>
+      <tr><td>题材市场热度</td><td>25%</td><td>播放趋势、搜索指数、平台扶持</td></tr>
+      <tr><td>AI 制作适配度</td><td>20%</td><td>场景复杂度、人物数、时代背景</td></tr>
+      <tr><td>版权成本性价比</td><td>15%</td><td>A 级 4–6 万 vs S 级 20–30 万 ROI</td></tr>
+      <tr><td>受众精准匹配</td><td>10%</td><td>平台用户画像吻合度</td></tr>
+    </table>
+    <div class="mt-s">
+      <span class="rating-pill sp">S+ ≥90 优先投产</span>
+      <span class="rating-pill s">S 75–89 推荐</span>
+      <span class="rating-pill a">A 60–74 轻量验证</span>
+      <span class="rating-pill b">B &lt;60 观察池</span>
+    </div>
+    <div class="deck-footer"><span class="dim2">02 · AI 评级 · Prompt→数据库→自动化</span><span class="slide-number" data-current="3" data-total="10"></span></div>
+    <div class="notes">AI 评级系统是数据壁垒。五维打分：商业潜力权重最高 30%。建设分三阶段：0-3 月 Prompt 工作流，3-9 月内部数据库，9 月以上训练专属预测模型。</div>
+  </section>
+
+  <!-- 03 核心竞争力 -->
+  <section class="slide" data-title="竞争力">
+    <p class="kicker"><span class="sec-num">03</span>核心竞争力</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">六大差异化壁垒</h2>
+    <div class="grid g3 mt-l anim-stagger-list" data-anim-target>
+      <div class="moat-card"><div class="icon">🔒</div><h4>合规壁垒</h4><p>2026.4 广电 AI 备案新规 · 正版授权 · 后来者需 6–12 月追赶</p></div>
+      <div class="moat-card"><div class="icon">⚙️</div><h4>技术壁垒</h4><p>自研可部署平台 · 私有化 · 迁移成本极高</p></div>
+      <div class="moat-card"><div class="icon">🎓</div><h4>产能壁垒</h4><p>校企合作低成本创作力 · 培训体系保障质量</p></div>
+      <div class="moat-card"><div class="icon">🌐</div><h4>渠道壁垒</h4><p>国内供应商资质 + 海外 ReelShort 双闭环</p></div>
+      <div class="moat-card"><div class="icon">🤖</div><h4>数据壁垒</h4><p>AI 五维评级 · 数据飞轮越用越准</p></div>
+      <div class="moat-card"><div class="icon">💰</div><h4>模式壁垒</h4><p>五重收入抗风险 · 全套做下来才有护城河</p></div>
+    </div>
+    <div class="deck-footer"><span class="dim2">03 · 六大壁垒</span><span class="slide-number" data-current="4" data-total="10"></span></div>
+    <div class="notes">六大壁垒：合规先人一步、自研平台、校企产能、双渠道、AI 评级数据、五重收入模式。任何一块单独都容易被复制，全套做下来才是护城河。</div>
+  </section>
+
+  <!-- 04 合作方权益 -->
+  <section class="slide" data-title="合作方">
+    <p class="kicker"><span class="sec-num">04</span>合作方权益</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">谁做什么 · 谁得什么</h2>
+    <div class="grid g3 mt-l anim-stagger-list" data-anim-target>
+      <div class="partner-chip"><div class="icon">🎓</div><h4>高校 / 职校</h4><p>提供场地学生 · 获产学研背书 + 就业率 + 版权分成</p></div>
+      <div class="partner-chip"><div class="icon">🤝</div><h4>代理商</h4><p>区域 BD 高校 · Token 返佣 20–35% · 课程分成 40–60%</p></div>
+      <div class="partner-chip"><div class="icon">📝</div><h4>剧本版权方</h4><p>正版授权 · A 级 4–6 万 / S 级 15–30 万保底 + 分成</p></div>
+      <div class="partner-chip"><div class="icon">📱</div><h4>分发平台</h4><p>获合规内容供给 · 我们获分成 + 流量扶持 + 数据反馈</p></div>
+      <div class="partner-chip"><div class="icon">🧑‍🎓</div><h4>学生团队</h4><p>3–5 人一组 · 作品分成 + 作品集 + 就业内推</p></div>
+    </div>
+    <div class="card mt-m" style="padding:16px 20px;background:var(--grad-soft)"><p style="margin:0;font-size:14px;color:var(--text-2)">我方作为<strong style="color:var(--text-1)">整合者</strong>：提供技术、资质、分发渠道和质量管控；合作方负责资源和产能供给。</p></div>
+    <div class="deck-footer"><span class="dim2">04 · 合作方生态</span><span class="slide-number" data-current="5" data-total="10"></span></div>
+    <div class="notes">五类合作方各有明确职责和收益。高校和代理商是产能扩张核心，剧本方和平台是上下游，学生团队是执行层。利益分配清晰是体系稳定的基础。</div>
+  </section>
+
+  <!-- 05 学校合作 -->
+  <section class="slide" data-title="学校合作">
+    <p class="kicker"><span class="sec-num">05</span>学校合作专项</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">高校 = 最稀缺的优质低成本创作力</h2>
+    <div class="grid g3 mt-m anim-stagger-list" data-anim-target>
+      <div class="card card-accent" style="padding:16px"><h4 style="font-size:13px">⚡ 为什么需要大学生</h4><p class="dim" style="font-size:12px;margin:6px 0 0;line-height:1.6">精力足 · 时间充裕 · 创造力强 · 成本极低 · 2–4 周即可上手 · 学校背书保质量</p></div>
+      <div class="card card-accent" style="padding:16px"><h4 style="font-size:13px">模式一 · 学生自付</h4><p class="dim" style="font-size:12px;margin:6px 0 0">校方零投入 · 学生动力足 · 适合创业导向院校</p></div>
+      <div class="card card-accent" style="padding:16px"><h4 style="font-size:13px">模式二 · 校方买单 ⭐</h4><p class="dim" style="font-size:12px;margin:6px 0 0">统一采购 Token · 覆盖更广 · Token 消耗更大 · <b>推荐首选</b></p></div>
+    </div>
+    <div class="grid g2 mt-m">
+      <div class="card" style="padding:16px"><h4 style="font-size:13px">学生获得</h4><ul class="dim" style="font-size:12px;margin:6px 0 0;padding-left:16px;line-height:1.7"><li>平台分成 + 认证证书 + 作品集</li><li>就业内推 + 创业机会</li></ul></div>
+      <div class="card" style="padding:16px"><h4 style="font-size:13px">学校获得</h4><ul class="dim" style="font-size:12px;margin:6px 0 0;padding-left:16px;line-height:1.7"><li>人才培养基地背书 + 就业率</li><li>免费课程体系 + 版权分成</li></ul></div>
+    </div>
+    <div class="warn-box">第一所合作院校是样本案例 — 用 3 个月打磨有数据、有作品、有收益的案例，宁可做慢做深，不要铺大求快。</div>
+    <div class="deck-footer"><span class="dim2">05 · 学校合作 · 传媒/数媒/编导类优先</span><span class="slide-number" data-current="6" data-total="10"></span></div>
+    <div class="notes">学校合作是产能扩张核心路径。对接教务处，定位「AI 行业就业能力培养」而非「兼职赚钱」。模式二校方统一买单最推荐。第一所学校做深做透当样本。</div>
+  </section>
+
+  <!-- 06 平台搭建 -->
+  <section class="slide" data-title="平台搭建">
+    <p class="kicker"><span class="sec-num">06</span>平台搭建</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">落地清单 · 执行优先级</h2>
+    <div class="mt-m anim-stagger-list" data-anim-target>
+      <div class="task-item"><span class="n">1</span><div><b>整合 AI 制片工具链</b><p>ArcReel + Jellyfish API 对接 · 统一账号/素材/Token 计费</p></div></div>
+      <div class="task-item"><span class="n">2</span><div><b>AI 剧本评级系统（第一阶段）</b><p>Claude/GPT 五维 Prompt 工作流 · 1–2 周上线</p></div></div>
+      <div class="task-item"><span class="n">3</span><div><b>抖音官方内容供应商资质</b><p>直供内容 · 更高分成 · 需 6 个月+ · 尽早启动</p></div></div>
+      <div class="task-item"><span class="n">4</span><div><b>海外主体 + 平台入驻</b><p>新/港公司 · Payoneer/Wise · ReelShort/DramaBox 并行推进</p></div></div>
+      <div class="task-item"><span class="n">5</span><div><b>广电 AI 短剧备案体系</b><p>2026.4.1 起正式监管 · 标准化材料模板库</p></div></div>
+      <div class="task-item"><span class="n">6</span><div><b>剧本采购 + Token 持续投入</b><p>与红果/抖音长期合作 · 批量采购算力折扣</p></div></div>
+    </div>
+    <div class="deck-footer"><span class="dim2">06 · 资质+技术+渠道 三重壁垒</span><span class="slide-number" data-current="7" data-total="10"></span></div>
+    <div class="notes">平台搭建六件事按优先级排列。供应商资质和海外主体周期最长，BD 入职第一周就要推进。目标是让采购→制作→分发→变现全流程跑通。</div>
+  </section>
+
+  <!-- 07 顶层设计 -->
+  <section class="slide" data-title="顶层设计">
+    <p class="kicker"><span class="sec-num">07</span>顶层设计</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">小核心团队 + 外部资源放大产能</h2>
+    <div class="grid g3 mt-m anim-stagger-list" data-anim-target>
+      <div class="role-card"><h4>总运营负责人</h4><p>校企合作 · 资质申请 · 内容排期 · 数据复盘</p></div>
+      <div class="role-card"><h4>技术负责人</h4><p>平台研发 · API 对接 · 私有化部署 · 评级系统</p></div>
+      <div class="role-card"><h4>内容总监</h4><p>制作规范 · 课程开发 · 作品审核 · 合规审核</p></div>
+      <div class="role-card"><h4>商务 BD</h4><p>高校签约 · 平台资质 · 海外入驻 · 代理商</p></div>
+      <div class="role-card"><h4>合规负责人</h4><p>版权管理 · 广电备案 · 海外主体 · 风险巡查</p></div>
+      <div class="role-card"><h4>运营 + 投流</h4><p>账号运营 · ROI 监控 · 海外上传 · 收益汇总</p></div>
+    </div>
+    <div class="grid g2 mt-m">
+      <div class="warn-box" style="margin:0">⚠ 最大短板：<b>缺操盘手</b> — 第一个全职招聘就是总运营负责人</div>
+      <div class="warn-box" style="margin:0">⚠ 第二大短板：<b>平台资质</b> — 海外主体 + 国内供应商立刻启动</div>
+    </div>
+    <div class="deck-footer"><span class="dim2">07 · 5–8 人核心 + 学生/代理商/外包</span><span class="slide-number" data-current="8" data-total="10"></span></div>
+    <div class="notes">三层结构：决策层不陷日常执行，核心职能层 5-8 人，产能执行层靠学生/代理商/外包。最缺操盘手和平台资质，这两件事不能等。</div>
+  </section>
+
+  <!-- 08 投入规划 -->
+  <section class="slide" data-title="投入规划">
+    <p class="kicker"><span class="sec-num">08</span>投入规划</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">成本拆分 · 回收预期</h2>
+    <div class="grid g2 mt-l anim-stagger-list" data-anim-target>
+      <div class="metric-box"><div class="n">31–43万</div><div class="l">S+ 完整方案 · 快速建全套体系</div></div>
+      <div class="metric-box"><div class="n">10–15万</div><div class="l">A 级轻启动 · 先验证 ROI 再追加</div></div>
+    </div>
+    <table class="dim-table mt-m">
+      <tr><th>成本项目</th><th>费用</th><th>类型</th></tr>
+      <tr><td>AI 平台研发+部署</td><td>8–12 万</td><td>一次性</td></tr>
+      <tr><td>算力 Token</td><td>2–3 万/月</td><td>持续</td></tr>
+      <tr><td>平台资质+海外主体</td><td>3–5 万</td><td>一次性</td></tr>
+      <tr><td>剧本采购（A/S 级）</td><td>4–30 万/部</td><td>持续</td></tr>
+      <tr><td>核心团队（前 3 月）</td><td>9–15 万</td><td>持续</td></tr>
+    </table>
+    <div class="grid g2 mt-m">
+      <div class="card card-accent" style="padding:14px;text-align:center"><h4 style="font-size:28px;margin:0" class="gradient-text">1/10</h4><p class="dim" style="font-size:12px;margin:4px 0 0">AI 制作成本 vs 传统真人短剧</p></div>
+      <div class="card card-accent" style="padding:14px;text-align:center"><h4 style="font-size:28px;margin:0" class="gradient-text">数天</h4><p class="dim" style="font-size:12px;margin:4px 0 0">制作周期 · 传统需数周</p></div>
+    </div>
+    <div class="deck-footer"><span class="dim2">08 · 建议 A 级轻启动验证闭环</span><span class="slide-number" data-current="9" data-total="10"></span></div>
+    <div class="notes">两种方案：S+ 完整版 31-43 万，A 级轻启动 10-15 万。建议先用 A 级剧本 4-6 万保底验证 ROI，成功后再追加 S 级和海外分发。AI 制作成本是传统 1/10。</div>
+  </section>
+
+  <!-- 09 行业生态 -->
+  <section class="slide" data-title="行业生态">
+    <p class="kicker"><span class="sec-num">09</span>行业与合作生态</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">竞争格局 · 窗口判断</h2>
+    <table class="dim-table mt-m">
+      <tr><th>玩家</th><th>问题</th><th>我们差异</th></tr>
+      <tr><td>传统 MCN 转型</td><td>灰色剧本 · 无备案</td><td>全流程 AI + 合规先行</td></tr>
+      <tr><td>AI 技术公司</td><td>技术强内容弱</td><td>技术+内容+渠道三位一体</td></tr>
+      <tr><td>个人创作者</td><td>无供应商通道</td><td>合规框架 → 变成我们的产能</td></tr>
+      <tr><td>头部短剧公司</td><td>转型慢成本高</td><td>轻资产纯 AI · 成本 1/10</td></tr>
+    </table>
+    <div class="grid g3 mt-l anim-stagger-list" data-anim-target>
+      <div class="card card-accent" style="padding:16px"><h4 style="font-size:13px">⏰ 窗口期</h4><p class="dim" style="font-size:12px;margin:6px 0 0">未来 12–18 个月是关键窗口，合规门槛后将大幅提升</p></div>
+      <div class="card card-accent" style="padding:16px"><h4 style="font-size:13px">⚠ 最大风险</h4><p class="dim" style="font-size:12px;margin:6px 0 0">平台政策突变 · 版权纠纷 · 海外封号 · 关键成员流失</p></div>
+      <div class="card card-accent" style="padding:16px"><h4 style="font-size:13px">🎯 切入策略</h4><p class="dim" style="font-size:12px;margin:6px 0 0">A 级轻方案跑通闭环 → 用真实 ROI 谈高校和代理商</p></div>
+    </div>
+    <div class="deck-footer"><span class="dim2">← → 翻页 · F 全屏 · S 演讲者模式 · 内部文件请勿外传</span><span class="slide-number" data-current="10" data-total="10"></span></div>
+    <div class="notes">行业四类玩家各有短板。窗口期 12-18 个月，先用 A 级方案跑通闭环拿数据，再用 ROI 谈合作。合作伙伴生态覆盖剧本上游、AI 工具链、国内外分发平台和高校产能。谢谢大家。</div>
+  </section>
+
+</div>
+<script src="assets/runtime.js"></script>
+</body>
+</html>
