@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="cyberpunk-neon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OpenClaw 商业生态图谱</title>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" id="theme-link" href="assets/themes/cyberpunk-neon.css">
+<link rel="stylesheet" href="assets/animations/animations.css">
+<style>
+.tpl-openclaw{--oc-cyan:#00f0ff;--oc-pink:#ff2bd6;--oc-green:#39ff14;--oc-yellow:#f9f871}
+.tpl-openclaw .slide{padding:60px 80px;overflow:hidden}
+.tpl-openclaw .slide.cover{display:flex;flex-direction:column;justify-content:center}
+.tpl-openclaw .slide::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    linear-gradient(rgba(0,240,255,.035) 1px,transparent 1px) 0 0/48px 48px,
+    linear-gradient(90deg,rgba(255,43,214,.035) 1px,transparent 1px) 0 0/48px 48px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000 40%,transparent 100%);
+}
+.tpl-openclaw .slide>*{position:relative;z-index:1}
+.tpl-openclaw .h1{font-family:var(--font-display);font-size:68px;line-height:1.05;font-weight:800;letter-spacing:-.02em}
+.tpl-openclaw .h2{font-family:var(--font-display);font-size:44px;line-height:1.1;font-weight:700;letter-spacing:-.02em}
+.tpl-openclaw .kicker{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--oc-cyan)}
+.tpl-openclaw .kicker::before{content:"// "}
+.tpl-openclaw .sec-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:34px;margin-right:8px;
+  font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:800;
+  color:var(--oc-cyan);border:1px solid var(--border-strong);
+  border-radius:var(--radius);background:rgba(0,240,255,.08);vertical-align:middle;
+}
+.tpl-openclaw .gradient-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tpl-openclaw .neon-line{width:100px;height:3px;margin:16px 0 24px;background:var(--grad);box-shadow:0 0 12px var(--oc-pink),0 0 24px var(--oc-cyan)}
+.tpl-openclaw .confidential{display:inline-flex;padding:5px 12px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.08em;background:rgba(255,43,214,.1);color:var(--oc-pink);border:1px solid rgba(255,43,214,.3)}
+.tpl-openclaw .stat-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:28px}
+.tpl-openclaw .stat-chip{display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:var(--radius);background:rgba(15,15,26,.8);border:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-2)}
+.tpl-openclaw .stat-chip b{color:var(--oc-cyan);font-size:20px;font-weight:700}
+.tpl-openclaw .pillar-card{
+  padding:16px 18px;border-radius:var(--radius-lg);
+  background:rgba(15,15,26,.75);border:1px solid var(--border);backdrop-filter:blur(8px);
+}
+.tpl-openclaw .pillar-card .icon{font-size:24px;margin-bottom:8px}
+.tpl-openclaw .pillar-card h4{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--oc-cyan);margin:0 0 4px}
+.tpl-openclaw .pillar-card p{margin:0;font-size:12px;color:var(--text-2);line-height:1.45}
+.tpl-openclaw .pillar-card .tag{font-size:10px;color:var(--oc-pink);margin-top:6px;display:block}
+.tpl-openclaw .feat-card{display:flex;gap:14px;padding:18px 20px;border-radius:var(--radius-lg);background:rgba(15,15,26,.75);border:1px solid var(--border)}
+.tpl-openclaw .feat-card .icon{font-size:28px;flex-shrink:0}
+.tpl-openclaw .feat-card h4{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--oc-cyan);margin:0 0 6px}
+.tpl-openclaw .feat-card p{margin:0;font-size:13px;color:var(--text-2);line-height:1.5}
+.tpl-openclaw .pill-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.tpl-openclaw .cy-pill{padding:4px 10px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:10px;background:rgba(0,240,255,.08);color:var(--oc-cyan);border:1px solid rgba(0,240,255,.28)}
+.tpl-openclaw .cy-pill.pink{background:rgba(255,43,214,.08);color:var(--oc-pink);border-color:rgba(255,43,214,.28)}
+.tpl-openclaw .cy-pill.green{background:rgba(57,255,20,.08);color:var(--oc-green);border-color:rgba(57,255,20,.28)}
+.tpl-openclaw .repo-item{padding:12px 14px;border-radius:var(--radius);background:rgba(15,15,26,.6);border:1px solid var(--border);margin-bottom:8px}
+.tpl-openclaw .repo-item b{display:block;font-size:12px;color:var(--text-1);font-family:'JetBrains Mono',monospace;margin-bottom:4px}
+.tpl-openclaw .repo-item p{margin:0;font-size:11px;color:var(--text-2);line-height:1.4}
+.tpl-openclaw .quote-tag{display:inline-block;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:700;background:var(--grad-soft);color:var(--oc-cyan);border:1px solid var(--border);margin-bottom:8px}
+.tpl-openclaw .card{border:1px solid var(--border);backdrop-filter:blur(8px)}
+.tpl-openclaw .card-accent{border-top:3px solid var(--oc-cyan)}
+.tpl-openclaw .cover-glow{position:absolute;top:-20%;right:-10%;width:480px;height:480px;background:radial-gradient(circle,rgba(255,43,214,.16),transparent 70%);pointer-events:none;z-index:0}
+</style>
+</head>
+<body class="tpl-openclaw" data-themes="cyberpunk-neon,tokyo-night,dracula,terminal-green,blueprint" data-theme-base="assets/themes/">
+
+<div class="deck">
+
+  <!-- Cover -->
+  <section class="slide cover" data-title="Cover">
+    <div class="cover-glow"></div>
+    <span class="confidential anim-fade-up" data-anim="fade-up">内部文档 v1.0 · 仅限团队评审</span>
+    <p class="kicker mt-m anim-fade-up" data-anim="fade-up">OpenClaw Commercial Ecosystem</p>
+    <div class="neon-line"></div>
+    <h1 class="h1 anim-fade-up" data-anim="fade-up">OpenClaw<br><span class="gradient-text">商业生态图谱</span></h1>
+    <p class="lede mt-m" style="max-width:640px;font-size:17px;color:var(--text-2)">五大战略板块全景 — 从云端基础设施到垂直行业应用的完整商业生态</p>
+    <div class="stat-row anim-stagger-list" data-anim-target>
+      <div class="stat-chip"><span>战略板块</span><b>5</b></div>
+      <div class="stat-chip"><span>核心仓库</span><b>15+</b></div>
+      <div class="stat-chip"><span>最高降本</span><b>80%</b></div>
+      <div class="stat-chip"><span>性能提升</span><b>10x</b></div>
+    </div>
+    <div class="deck-footer"><span class="mono dim2">OPENCLAW · ECOSYSTEM</span><span class="slide-number" data-current="1" data-total="8"></span></div>
+    <div class="notes">各位好，这份内部文档梳理了围绕 OpenClaw 框架构建的完整商业生态，涵盖五大战略层级。接下来按板块逐一讲解：基础设施、成本治理、高性能运行时、企业安全和垂直 SaaS。</div>
+  </section>
+
+  <!-- Overview -->
+  <section class="slide" data-title="Overview">
+    <p class="kicker">Overview · 生态板块总览</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">五大战略层级 · 从 Land 到 SaaS</h2>
+    <div class="grid g3 mt-l anim-stagger-list" data-anim-target style="gap:12px">
+      <div class="pillar-card"><div class="icon">☁️</div><h4>01 · INFRA</h4><p>云端托管与基础设施</p><span class="tag">The "Land" — 算力底座</span></div>
+      <div class="pillar-card"><div class="icon">💰</div><h4>02 · COST</h4><p>Token 路由与成本治理</p><span class="tag">The "Utility" — 省钱利器</span></div>
+      <div class="pillar-card"><div class="icon">⚡</div><h4>03 · PERF</h4><p>高性能运行时与边缘侧</p><span class="tag">The "Performance" — 极致效率</span></div>
+      <div class="pillar-card"><div class="icon">🔒</div><h4>04 · SECURE</h4><p>企业级安全与审计</p><span class="tag">The "Lock" — 隐私屏障</span></div>
+      <div class="pillar-card" style="grid-column:span 2"><div class="icon">🚀</div><h4>05 · SAAS</h4><p>行业垂直商业应用 · 变现终端</p><span class="tag">The "SaaS" — 开箱即用的 AI 雇员</span></div>
+    </div>
+    <div class="deck-footer"><span class="dim2">生态总览</span><span class="slide-number" data-current="2" data-total="8"></span></div>
+    <div class="notes">五个板块层层递进：Land 是土地，Utility 帮用户省钱，Performance 提效率，Lock 保安全，SaaS 是最终变现终端。每一层都可独立商业化。</div>
+  </section>
+
+  <!-- 01 INFRA -->
+  <section class="slide" data-title="INFRA">
+    <p class="kicker"><span class="sec-num">01</span>Infrastructure · The "Land"</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">云端托管 — 一键 24/7 在线智能伙伴</h2>
+    <div class="grid g2 mt-l anim-stagger-list" data-anim-target>
+      <div class="feat-card"><div class="icon">😣</div><div><h4>核心痛点</h4><p>Docker 编排 · SSL 续期 · 24h 运行环境 — 部署门槛极高，非技术用户望而却步</p></div></div>
+      <div class="feat-card"><div class="icon">✨</div><div><h4>价值主张</h4><p>一键部署 · 自动 DNS/SSL · WhatsApp/Telegram 对接 — 10 分钟拥有云端 AI 节点</p></div></div>
+    </div>
+    <div class="pill-row mt-m"><span class="cy-pill">一键部署</span><span class="cy-pill">自动 SSL</span><span class="cy-pill pink">24/7 在线</span><span class="cy-pill green">WhatsApp</span><span class="cy-pill">Telegram</span></div>
+    <div class="grid g3 mt-m">
+      <div class="repo-item"><b>bfzli / clawhost</b><p>旗舰一键部署 · Docker + 反向代理 + SSL 自动续期</p></div>
+      <div class="repo-item"><b>abhishek-kureriya / clawhost</b><p>管理面板版 · 多实例监控 · 配置热更新</p></div>
+      <div class="repo-item"><b>essamamdani / openclaw-coolify</b><p>Coolify PaaS 模板 · 一键推送运行</p></div>
+    </div>
+    <div class="deck-footer"><span class="dim2">01 · INFRA · 独立开发者 · 中小企业 · 技术发烧友</span><span class="slide-number" data-current="3" data-total="8"></span></div>
+    <div class="notes">基础设施层是整个生态的土地，掌握运行环境入口就有向上销售其他产品的天然渠道。代表仓库 clawhost 系列和 Coolify 模板。</div>
+  </section>
+
+  <!-- 02 COST -->
+  <section class="slide" data-title="COST">
+    <p class="kicker"><span class="sec-num">02</span>Cost Governance · The "Utility"</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">Token 路由 — 降本 80% 的 AI 转发专家</h2>
+    <div class="grid g2 mt-l anim-stagger-list" data-anim-target>
+      <div class="feat-card"><div class="icon">📈</div><div><h4>核心痛点</h4><p>System Prompt 完整注入导致 Token 膨胀，重度用户账单高出 3–10 倍</p></div></div>
+      <div class="feat-card"><div class="icon">🎯</div><div><h4>价值主张</h4><p>智能模型路由 · Prompt 缓存压缩 · 实时成本熔断 · 成本看板预警</p></div></div>
+    </div>
+    <div class="card mt-m card-accent" style="padding:14px 18px"><p class="dim" style="margin:0;font-size:13px"><b style="color:var(--oc-cyan)">实现路径：</b>在 OpenClaw 与 Provider 之间插入中间路由层 — 复杂度评分 → 选最优模型 → 压缩重复 Prompt → 预算熔断</p></div>
+    <div class="grid g3 mt-m">
+      <div class="repo-item"><b>BlockRunAI / ClawRouter</b><p>核心路由引擎 · 多 Provider 故障转移</p></div>
+      <div class="repo-item"><b>BADJAB22 / leo-optima</b><p>Prompt 缓存与语义归并压缩</p></div>
+      <div class="repo-item"><b>AtlasPA / cost-governor</b><p>实时成本监控 · 自动熔断降级</p></div>
+    </div>
+    <div class="deck-footer"><span class="dim2">02 · COST · Token 转售商 · 重度用户 · 成本敏感工作室</span><span class="slide-number" data-current="4" data-total="8"></span></div>
+    <div class="notes">成本治理是利润损耗最严重的痛点。简单任务走 DeepSeek，复杂推理走 Claude。每省 1% 成本对 Token 转售商就是直接利润。</div>
+  </section>
+
+  <!-- 03 PERF -->
+  <section class="slide" data-title="PERF">
+    <p class="kicker"><span class="sec-num">03</span>High-Performance · The "Performance"</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">高性能运行时 — 10 倍吞吐 · 0 延迟响应</h2>
+    <div class="grid g2 mt-l anim-stagger-list" data-anim-target>
+      <div class="feat-card"><div class="icon">🐍</div><div><h4>核心痛点</h4><p>Python 原版 GIL 限制 · 内存占用大 · 无法部署嵌入式/IoT 设备</p></div></div>
+      <div class="feat-card"><div class="icon">🦀</div><div><h4>价值主张</h4><p>Rust/Go 重构 · 10x 吞吐 · RISC-V 嵌入式 · 单机更多并发实例</p></div></div>
+    </div>
+    <div class="pill-row mt-m"><span class="cy-pill">Rust 重写</span><span class="cy-pill">Go 运行时</span><span class="cy-pill pink">RISC-V</span><span class="cy-pill green">IoT 边缘</span></div>
+    <div class="grid g3 mt-m">
+      <div class="repo-item"><b>nearai / ironclaw</b><p>Rust 全栈重写 · 吞吐 8–12x · 内存降 70%</p></div>
+      <div class="repo-item"><b>theonlyhennygod / zeroclaw</b><p>超轻量 · 毫秒级冷启动 · Serverless 边缘</p></div>
+      <div class="repo-item"><b>sipeed / picoclaw</b><p>RISC-V 嵌入式 · Lichee Pi 运行 Agent · AIoT</p></div>
+    </div>
+    <div class="deck-footer"><span class="dim2">03 · PERF · 长期价值可能超过其他板块总和</span><span class="slide-number" data-current="5" data-total="8"></span></div>
+    <div class="notes">高性能板块技术门槛极高，RISC-V 嵌入式是真正的深护城河。目标客户：高并发平台运营商和 IoT 硬件厂商。</div>
+  </section>
+
+  <!-- 04 SECURE -->
+  <section class="slide" data-title="SECURE">
+    <p class="kicker"><span class="sec-num">04</span>Enterprise Security · The "Lock"</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">企业安全 — 让 AI 在保险箱里工作</h2>
+    <div class="grid g3 mt-m anim-stagger-list" data-anim-target>
+      <div class="card card-accent" style="padding:16px"><h4 style="font-size:13px">⚠ 三大顾虑</h4><ul class="dim" style="font-size:12px;margin:6px 0 0;padding-left:16px;line-height:1.7"><li>Agent 越权操作风险</li><li>Prompt 注入攻击</li><li>敏感数据外泄</li></ul></div>
+      <div class="card card-accent" style="padding:16px"><h4 style="font-size:13px">🛡 治理框架</h4><ul class="dim" style="font-size:12px;margin:6px 0 0;padding-left:16px;line-height:1.7"><li>全量审计日志</li><li>技能权限沙箱</li><li>API Key 隔离代理</li></ul></div>
+      <div class="card card-accent" style="padding:16px"><h4 style="font-size:13px">🏢 目标客户</h4><p class="dim" style="font-size:12px;margin:6px 0 0">金融 · 法律 · 医疗 · HR/财务 · 上市公司 — ACV 最高</p></div>
+    </div>
+    <div class="grid g3 mt-m">
+      <div class="repo-item"><span class="quote-tag">NVIDIA 官方</span><b>NVIDIA / NemoClaw</b><p>NeMo Guardrails · 企业级 AI 安全护栏 · 最具背书价值</p></div>
+      <div class="repo-item"><b>newtro / ClawGuard</b><p>权限审计中间件 · ACL 鉴权 · 不可篡改日志</p></div>
+      <div class="repo-item"><b>tech4242 / aquaman</b><p>API Key 隔离代理 · 按项目用量计量</p></div>
+    </div>
+    <div class="deck-footer"><span class="dim2">04 · SECURE · 英伟达官方安全栈加持</span><span class="slide-number" data-current="6" data-total="8"></span></div>
+    <div class="notes">企业安全是大型采购的核心阻力。NemoClaw 英伟达背书降低采购顾虑。金融法律行业 ACV 最高，口碑可加速拓客。</div>
+  </section>
+
+  <!-- 05 SAAS -->
+  <section class="slide" data-title="SAAS">
+    <p class="kicker"><span class="sec-num">05</span>Vertical SaaS · The "SaaS"</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">垂直应用 — 开箱即用的 AI 雇员</h2>
+    <div class="grid g2 mt-l anim-stagger-list" data-anim-target>
+      <div class="feat-card"><div class="icon">🔧</div><div><h4>核心痛点</h4><p>原框架是通用基础设施，缺乏行业业务逻辑，无法直接产生经济价值</p></div></div>
+      <div class="feat-card"><div class="icon">💼</div><div><h4>价值主张</h4><p>封装垂直 Skill 包 — 量化交易 · AI 基金 · 播客生产 · 跨境电商</p></div></div>
+    </div>
+    <div class="pill-row mt-m"><span class="cy-pill">量化交易</span><span class="cy-pill pink">AI 基金管理</span><span class="cy-pill green">播客生产</span><span class="cy-pill">跨境电商</span></div>
+    <div class="grid g3 mt-m">
+      <div class="repo-item"><b>tradebots / openclaw-trader</b><p>量化 Skill · K 线分析 · Binance/OKX 对接</p></div>
+      <div class="repo-item"><b>RioTheGreat-ai / agentfund-skill</b><p>AI 众筹基金 · 研报 · LP 沟通 · 组合追踪</p></div>
+      <div class="repo-item"><b>polaroteam / moltdj-skill</b><p>播客全流程 · 选题到发布 · 数小时→数十分钟</p></div>
+    </div>
+    <div class="card mt-m" style="padding:14px 18px;border-left:3px solid var(--oc-pink)"><p class="dim" style="margin:0;font-size:13px"><b style="color:var(--oc-cyan)">商业模式：</b>ARR 增长潜力最高 · 配合 INFRA 层形成「基础设施 × SaaS」双重飞轮</p></div>
+    <div class="deck-footer"><span class="dim2">05 · SAAS · 交易员 · 电商 · 播客 · VC</span><span class="slide-number" data-current="7" data-total="8"></span></div>
+    <div class="notes">垂直 SaaS 变现最直接，用户能清晰感知经济价值。交易类客户甚至愿意按利润分成。每个垂直行业都是独立细分市场。</div>
+  </section>
+
+  <!-- CTA -->
+  <section class="slide cover" data-title="CTA">
+    <div class="cover-glow"></div>
+    <p class="kicker anim-fade-up" data-anim="fade-up">Ready to Build</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">开启你的<br><span class="gradient-text">OpenClaw 商业版图</span></h2>
+    <p class="lede mt-m" style="max-width:560px;font-size:17px;color:var(--text-2)">从算力底座到垂直应用，每一个板块都是可独立变现的商业机会</p>
+    <div class="grid g3 mt-l anim-stagger-list" data-anim-target>
+      <div class="pillar-card" style="text-align:center"><div class="icon">☁️</div><h4>Land</h4><p>部署云节点</p></div>
+      <div class="pillar-card" style="text-align:center"><div class="icon">💰</div><h4>Utility</h4><p>优化 Token 成本</p></div>
+      <div class="pillar-card" style="text-align:center"><div class="icon">🚀</div><h4>SaaS</h4><p>垂直 Skill 变现</p></div>
+    </div>
+    <div class="pill-row mt-l"><span class="cy-pill">GitHub 生态列表</span><span class="cy-pill pink">内部评审 v1.0</span></div>
+    <div class="deck-footer"><span class="mono dim2">← → 翻页 · F 全屏 · S 演讲者模式</span><span class="slide-number" data-current="8" data-total="8"></span></div>
+    <div class="notes">总结：五个板块从 Land 到 SaaS 层层递进，选择切入点开始构建。每个板块都有代表仓库和明确目标客户。谢谢大家。</div>
+  </section>
+
+</div>
+<script src="assets/runtime.js"></script>
+</body>
+</html>
