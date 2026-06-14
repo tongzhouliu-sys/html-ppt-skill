@@ -11,653 +11,263 @@
 <style>
 .tpl-cyber-claude{
   --cy-pink:#ff2bd6;--cy-cyan:#00f0ff;--cy-yellow:#f9f871;--cy-green:#39ff14;
-  --sidebar-w:248px;
 }
-.tpl-cyber-claude .slide{
-  overflow:hidden;
-  align-content:start;
-}
-.tpl-cyber-claude .slide.with-nav{
-  display:grid;
-  grid-template-columns:var(--sidebar-w) 1fr;
-  gap:36px;
-  padding:44px 52px 56px 44px;
-}
-.tpl-cyber-claude .slide.full{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:64px 88px;
-}
+.tpl-cyber-claude .slide{padding:60px 80px;overflow:hidden}
 .tpl-cyber-claude .slide::before{
-  content:"";
-  position:absolute;inset:0;z-index:0;pointer-events:none;
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
   background:
     linear-gradient(rgba(0,240,255,.04) 1px,transparent 1px) 0 0/48px 48px,
     linear-gradient(90deg,rgba(255,43,214,.04) 1px,transparent 1px) 0 0/48px 48px;
   mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000 40%,transparent 100%);
 }
 .tpl-cyber-claude .slide::after{
-  content:"";
-  position:absolute;inset:0;z-index:0;pointer-events:none;
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
   background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.12) 2px,rgba(0,0,0,.12) 4px);
   opacity:.35;
 }
 .tpl-cyber-claude .slide>*{position:relative;z-index:1}
-.tpl-cyber-claude .sidebar{
-  border-right:1px solid var(--border);
-  padding-right:24px;
-  display:flex;
-  flex-direction:column;
-  min-height:0;
-  max-height:calc(100vh - 100px);
-}
-.tpl-cyber-claude .sidebar .brand{
-  font-family:var(--font-display);
-  font-size:15px;font-weight:800;line-height:1.35;
-  color:var(--text-1);
-  text-shadow:0 0 10px rgba(255,43,214,.4);
-}
-.tpl-cyber-claude .sidebar .brand-sub{
-  display:block;font-size:11px;font-weight:600;color:var(--cy-cyan);
-  letter-spacing:.08em;margin-top:4px;
-}
-.tpl-cyber-claude .nav-title{
-  font-family:'JetBrains Mono',monospace;
-  font-size:10px;font-weight:700;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--text-3);
-  margin:20px 0 10px;
-}
-.tpl-cyber-claude .nav-list{
-  list-style:none;padding:0;margin:0;
-  flex:1;overflow-y:auto;
-  scrollbar-width:thin;
-}
-.tpl-cyber-claude .nav-item{
-  display:grid;
-  grid-template-columns:28px 1fr;
-  grid-template-rows:auto auto;
-  column-gap:8px;row-gap:1px;
-  padding:7px 8px 7px 6px;
-  margin-bottom:2px;
-  border-radius:var(--radius-sm);
-  border-left:2px solid transparent;
-  font-size:12px;color:var(--text-3);
-  transition:background .2s,border-color .2s,color .2s;
-}
-.tpl-cyber-claude .nav-item .num{
-  grid-row:1/3;align-self:center;
-  font-family:'JetBrains Mono',monospace;
-  font-size:11px;font-weight:700;color:var(--text-3);
-}
-.tpl-cyber-claude .nav-item .label{
-  font-family:'JetBrains Mono',monospace;
-  font-size:11px;font-weight:600;color:var(--text-2);
-}
-.tpl-cyber-claude .nav-item .sub{
-  font-size:10px;color:var(--text-3);opacity:.85;
-}
-.tpl-cyber-claude .nav-item .star{
-  grid-column:2;font-size:9px;color:var(--cy-pink);letter-spacing:-1px;
-}
-.tpl-cyber-claude .nav-item.done .num{color:var(--cy-green)}
-.tpl-cyber-claude .nav-item.done .label{color:var(--text-2);opacity:.7}
-.tpl-cyber-claude .nav-item.current{
-  background:rgba(255,43,214,.1);
-  border-left-color:var(--cy-pink);
-  box-shadow:0 0 16px rgba(255,43,214,.12);
-}
-.tpl-cyber-claude .nav-item.current .num{color:var(--cy-cyan)}
-.tpl-cyber-claude .nav-item.current .label{color:var(--text-1);font-weight:700}
-.tpl-cyber-claude .nav-item.current .sub{color:var(--cy-cyan)}
-.tpl-cyber-claude .sidebar-footer{
-  margin-top:14px;padding-top:12px;
-  border-top:1px dashed var(--border);
-  display:flex;flex-wrap:wrap;gap:6px;
-}
-.tpl-cyber-claude .main{min-width:0;display:flex;flex-direction:column}
-.tpl-cyber-claude .h1{
-  font-family:var(--font-display);
-  font-size:68px;line-height:1.05;font-weight:800;letter-spacing:-.02em;
-}
-.tpl-cyber-claude .h2{
-  font-family:var(--font-display);
-  font-size:40px;line-height:1.12;font-weight:700;letter-spacing:-.02em;
-}
-.tpl-cyber-claude .kicker{
-  font-family:'JetBrains Mono',monospace;
-  font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-}
+.tpl-cyber-claude .slide.cover{display:flex;flex-direction:column;justify-content:center}
+.tpl-cyber-claude .h1{font-family:var(--font-display);font-size:72px;line-height:1.05;font-weight:800;letter-spacing:-.02em}
+.tpl-cyber-claude .h2{font-family:var(--font-display);font-size:46px;line-height:1.1;font-weight:700;letter-spacing:-.02em}
+.tpl-cyber-claude .kicker{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
 .tpl-cyber-claude .kicker::before{content:"// "}
-.tpl-cyber-claude .neon-line{
-  width:100px;height:3px;margin:16px 0 24px;
-  background:var(--grad);
-  box-shadow:0 0 12px var(--cy-pink),0 0 24px var(--cy-cyan);
+.tpl-cyber-claude .sec-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:36px;height:36px;margin-right:10px;
+  font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:800;
+  color:var(--cy-cyan);border:1px solid var(--border-strong);
+  border-radius:var(--radius);background:rgba(0,240,255,.08);
+  box-shadow:0 0 12px rgba(0,240,255,.2);vertical-align:middle;
 }
-.tpl-cyber-claude .stat-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
-.tpl-cyber-claude .stat-chip{
-  display:flex;align-items:center;gap:8px;
-  padding:8px 14px;border-radius:var(--radius);
-  background:rgba(15,15,26,.8);border:1px solid var(--border);
-  font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-2);
-}
-.tpl-cyber-claude .stat-chip b{color:var(--cy-cyan);font-size:18px;font-weight:700}
-.tpl-cyber-claude .feat-icon{
-  width:44px;height:44px;border-radius:var(--radius);
-  display:flex;align-items:center;justify-content:center;
-  font-size:22px;flex-shrink:0;
-  background:var(--grad-soft);border:1px solid var(--border-strong);
-  box-shadow:0 0 12px rgba(255,43,214,.2);
-}
-.tpl-cyber-claude .feat-card{
-  display:flex;gap:14px;align-items:flex-start;
-  padding:16px 18px;border-radius:var(--radius-lg);
-  background:rgba(15,15,26,.75);border:1px solid var(--border);
-  backdrop-filter:blur(8px);
-}
-.tpl-cyber-claude .feat-card h4{
-  font-family:'JetBrains Mono',monospace;
-  font-size:13px;color:var(--cy-cyan);margin:0 0 4px;
-}
-.tpl-cyber-claude .feat-card p{margin:0;font-size:13px;line-height:1.5;color:var(--text-2)}
-.tpl-cyber-claude .badge-star{
-  display:inline-flex;padding:3px 10px;border-radius:999px;
-  font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;
-  background:rgba(255,43,214,.12);color:var(--cy-pink);
-  border:1px solid rgba(255,43,214,.35);
-}
-.tpl-cyber-claude .pill-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.tpl-cyber-claude .cy-pill{
-  padding:4px 10px;border-radius:999px;
-  font-family:'JetBrains Mono',monospace;font-size:10px;
-  background:rgba(0,240,255,.08);color:var(--cy-cyan);
-  border:1px solid rgba(0,240,255,.28);
-}
-.tpl-cyber-claude .cy-pill.pink{background:rgba(255,43,214,.08);color:var(--cy-pink);border-color:rgba(255,43,214,.28)}
-.tpl-cyber-claude .cy-pill.green{background:rgba(57,255,20,.08);color:var(--cy-green);border-color:rgba(57,255,20,.28)}
-.tpl-cyber-claude .gradient-text{
-  background:var(--grad);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
+.tpl-cyber-claude .neon-line{width:110px;height:3px;margin:18px 0 26px;background:var(--grad);box-shadow:0 0 12px var(--cy-pink),0 0 24px var(--cy-cyan)}
+.tpl-cyber-claude .stat-row{display:flex;gap:18px;flex-wrap:wrap;margin-top:32px}
+.tpl-cyber-claude .stat-chip{display:flex;align-items:center;gap:10px;padding:10px 18px;border-radius:var(--radius);background:rgba(15,15,26,.8);border:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text-2)}
+.tpl-cyber-claude .stat-chip b{color:var(--cy-cyan);font-size:20px;font-weight:700}
+.tpl-cyber-claude .feat-icon{width:48px;height:48px;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;background:var(--grad-soft);border:1px solid var(--border-strong);box-shadow:0 0 14px rgba(255,43,214,.22)}
+.tpl-cyber-claude .feat-card{display:flex;gap:16px;align-items:flex-start;padding:20px 22px;border-radius:var(--radius-lg);background:rgba(15,15,26,.75);border:1px solid var(--border);backdrop-filter:blur(8px)}
+.tpl-cyber-claude .feat-card h4{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--cy-cyan);margin:0 0 6px}
+.tpl-cyber-claude .feat-card p{margin:0;font-size:14px;line-height:1.55;color:var(--text-2)}
+.tpl-cyber-claude .badge-star{display:inline-flex;padding:4px 12px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;background:rgba(255,43,214,.12);color:var(--cy-pink);border:1px solid rgba(255,43,214,.35)}
+.tpl-cyber-claude .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tpl-cyber-claude .cy-pill{padding:5px 12px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:11px;background:rgba(0,240,255,.08);color:var(--cy-cyan);border:1px solid rgba(0,240,255,.3)}
+.tpl-cyber-claude .cy-pill.pink{background:rgba(255,43,214,.08);color:var(--cy-pink);border-color:rgba(255,43,214,.3)}
+.tpl-cyber-claude .cy-pill.green{background:rgba(57,255,20,.08);color:var(--cy-green);border-color:rgba(57,255,20,.3)}
+.tpl-cyber-claude .gradient-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .tpl-cyber-claude .card{border:1px solid var(--border);backdrop-filter:blur(8px)}
 .tpl-cyber-claude .card-accent{border-top:3px solid var(--cy-cyan)}
-.tpl-cyber-claude .terminal{
-  background:rgba(5,5,12,.9);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;
-}
-.tpl-cyber-claude .terminal .bar{
-  display:flex;align-items:center;gap:8px;padding:8px 14px;
-  background:rgba(15,15,26,.9);border-bottom:1px solid var(--border);
-  font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-3);
-}
-.tpl-cyber-claude .terminal .dot{width:10px;height:10px;border-radius:50%;background:#ff2bd6}
+.tpl-cyber-claude .terminal{background:rgba(5,5,12,.9);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.tpl-cyber-claude .terminal .bar{display:flex;align-items:center;gap:8px;padding:10px 16px;background:rgba(15,15,26,.9);border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-3)}
+.tpl-cyber-claude .terminal .dot{width:11px;height:11px;border-radius:50%;background:#ff2bd6}
 .tpl-cyber-claude .terminal .dot:nth-child(2){background:var(--cy-yellow)}
 .tpl-cyber-claude .terminal .dot:nth-child(3){background:var(--cy-green)}
-.tpl-cyber-claude .quote-box{
-  margin-top:16px;padding:18px 22px;
-  border-left:3px solid var(--cy-pink);
-  background:rgba(255,43,214,.06);
-  border-radius:0 var(--radius-lg) var(--radius-lg) 0;
-}
-.tpl-cyber-claude .quote-box p{margin:0;font-size:14px;line-height:1.6;color:var(--text-1);font-style:italic}
-.tpl-cyber-claude .cover-glow{
-  position:absolute;top:-20%;right:-10%;width:480px;height:480px;
-  background:radial-gradient(circle,rgba(255,43,214,.18),transparent 70%);
-  pointer-events:none;z-index:0;
-}
-.tpl-cyber-claude .cover-glow-2{
-  position:absolute;bottom:-20%;left:-10%;width:380px;height:380px;
-  background:radial-gradient(circle,rgba(0,240,255,.15),transparent 70%);
-  pointer-events:none;z-index:0;
-}
-.tpl-cyber-claude .slide-head{
-  display:flex;align-items:center;gap:12px;margin-bottom:6px;
-}
-.tpl-cyber-claude .mini-table{width:100%;font-size:12px;border-collapse:collapse;margin-top:8px}
-.tpl-cyber-claude .mini-table td{padding:5px 0;border-bottom:1px solid rgba(255,255,255,.06)}
-.tpl-cyber-claude .workflow-step{
-  display:flex;gap:12px;align-items:flex-start;
-  padding:12px 14px;border-radius:var(--radius);
-  background:rgba(15,15,26,.6);border:1px solid var(--border);margin-bottom:8px;
-}
-.tpl-cyber-claude .workflow-step .step-num{
-  flex:none;width:28px;height:28px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;
-  background:var(--grad-soft);color:var(--cy-cyan);border:1px solid var(--border);
-}
-.tpl-cyber-claude .workflow-step b{display:block;font-size:13px;color:var(--text-1);margin-bottom:2px}
-.tpl-cyber-claude .workflow-step p{margin:0;font-size:12px;color:var(--text-2);line-height:1.45}
-.tpl-cyber-claude .deck-footer{grid-column:1/-1}
-.tpl-cyber-claude .slide.with-nav .deck-footer{
-  position:absolute;bottom:20px;right:52px;left:calc(var(--sidebar-w) + 80px);
-}
-.tpl-cyber-claude .slide.full .deck-footer{position:relative;margin-top:auto}
+.tpl-cyber-claude .quote-box{margin-top:24px;padding:22px 26px;border-left:3px solid var(--cy-pink);background:rgba(255,43,214,.06);border-radius:0 var(--radius-lg) var(--radius-lg) 0}
+.tpl-cyber-claude .quote-box p{margin:0;font-size:16px;line-height:1.65;color:var(--text-1);font-style:italic}
+.tpl-cyber-claude .cover-glow{position:absolute;top:-20%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(255,43,214,.18),transparent 70%);pointer-events:none;z-index:0}
+.tpl-cyber-claude .cover-glow-2{position:absolute;bottom:-20%;left:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(0,240,255,.15),transparent 70%);pointer-events:none;z-index:0}
+.tpl-cyber-claude .slide-head{display:flex;align-items:center;gap:14px;margin-bottom:4px}
+.tpl-cyber-claude .mini-table{width:100%;font-size:14px;border-collapse:collapse;margin-top:12px}
+.tpl-cyber-claude .mini-table td{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.tpl-cyber-claude .workflow-step{display:flex;gap:14px;align-items:flex-start;padding:14px 18px;border-radius:var(--radius);background:rgba(15,15,26,.6);border:1px solid var(--border);margin-bottom:10px}
+.tpl-cyber-claude .workflow-step .step-num{flex:none;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;background:var(--grad-soft);color:var(--cy-cyan);border:1px solid var(--border)}
+.tpl-cyber-claude .workflow-step b{display:block;font-size:14px;color:var(--text-1);margin-bottom:3px}
+.tpl-cyber-claude .workflow-step p{margin:0;font-size:13px;color:var(--text-2);line-height:1.5}
 </style>
 </head>
 <body class="tpl-cyber-claude" data-themes="cyberpunk-neon,tokyo-night,dracula,terminal-green,vaporwave" data-theme-base="assets/themes/">
 
 <div class="deck">
 
-  <!-- 01 Cover -->
-  <section class="slide full" data-title="Cover">
+  <!-- Cover -->
+  <section class="slide cover" data-title="Cover">
     <div class="cover-glow"></div>
     <div class="cover-glow-2"></div>
     <p class="kicker anim-fade-up" data-anim="fade-up">2026 Q2 · Claude Features</p>
     <div class="neon-line"></div>
     <h1 class="h1 anim-fade-up" data-anim="fade-up">2026 Q2<br><span class="gradient-text">Claude 新特性</span></h1>
-    <p class="lede mt-m" style="max-width:620px;font-size:18px">
-      功能全景详解 · 从入门到精通 — 左侧目录贯穿全篇，按 → 逐节浏览
-    </p>
+    <p class="lede mt-m" style="max-width:640px;font-size:18px">功能全景详解 · 按官网导航顺序，逐节掌握 8 大功能</p>
     <div class="stat-row anim-stagger-list" data-anim-target>
       <div class="stat-chip"><span>功能模块</span><b>8</b><span>大功能</span></div>
       <div class="stat-chip"><span>实战场景</span><b>30+</b><span>个场景</span></div>
       <div class="stat-chip"><span>联动案例</span><b>3</b><span>完整案例</span></div>
     </div>
-    <div class="deck-footer">
-      <span class="mono dim2">Claude 功能全景 · V1.0 · ← → 翻页 · S 演讲者模式</span>
-      <span class="slide-number" data-current="1" data-total="12"></span>
-    </div>
-    <div class="notes">大家好，欢迎了解 2026 Q2 Claude 功能全景。这份 PPT 与官网文档采用相同的左侧目录结构，方便对照查阅。我们从基础对话功能讲起，重点介绍三大核心工具，最后总结联动工作流。</div>
+    <div class="deck-footer"><span class="mono dim2">Claude 功能全景 · V1.0</span><span class="slide-number" data-current="1" data-total="12"></span></div>
+    <div class="notes">大家好，这份 PPT 按照官网左侧导航的章节顺序组织，共 11 节内容。我们从基础功能讲起，重点介绍三大核心工具，最后总结联动工作流与最佳实践。</div>
   </section>
 
-  <!-- 02 New Chat -->
-  <section class="slide with-nav" data-title="New Chat">
-    <aside class="sidebar">
-      <div class="brand">Claude<span class="brand-sub">功能全景 V1.0</span></div>
-      <h5 class="nav-title">目录 · Contents</h5>
-      <ul class="nav-list">
-        <li class="nav-item current"><span class="num">01</span><span class="label">New Chat</span><span class="sub">新建聊天</span></li>
-        <li class="nav-item"><span class="num">02</span><span class="label">Search</span><span class="sub">搜索</span></li>
-        <li class="nav-item"><span class="num">03</span><span class="label">Chats</span><span class="sub">聊天历史</span></li>
-        <li class="nav-item"><span class="num">04</span><span class="label">Projects</span><span class="sub">项目</span><span class="star">★★★</span></li>
-        <li class="nav-item"><span class="num">05</span><span class="label">Artifacts</span><span class="sub">工件产物</span><span class="star">★★★</span></li>
-        <li class="nav-item"><span class="num">06</span><span class="label">Code</span><span class="sub">终端编程</span><span class="star">★★★</span></li>
-        <li class="nav-item"><span class="num">07</span><span class="label">Customize</span><span class="sub">自定义</span></li>
-        <li class="nav-item"><span class="num">08</span><span class="label">Design</span><span class="sub">视觉设计</span><span class="star">★★</span></li>
-        <li class="nav-item"><span class="num">09</span><span class="label">Workflows</span><span class="sub">联动案例</span></li>
-        <li class="nav-item"><span class="num">10</span><span class="label">Compare</span><span class="sub">功能对比</span></li>
-        <li class="nav-item"><span class="num">11</span><span class="label">Best Practice</span><span class="sub">最佳实践</span></li>
-      </ul>
-      <div class="sidebar-footer"><span class="cy-pill">基础</span></div>
-    </aside>
-    <div class="main">
-      <div class="slide-head"><div class="feat-icon">💬</div><span class="badge-star">基础功能</span></div>
-      <p class="kicker">01 · New Chat</p>
-      <h2 class="h2">新建聊天 — 从零开始</h2>
-      <p class="lede" style="font-size:15px">创建全新对话会话，独立上下文，不受之前对话影响</p>
-      <div class="grid g2 mt-m anim-stagger-list" data-anim-target>
-        <div class="feat-card"><div class="feat-icon" style="width:36px;height:36px;font-size:18px">💡</div><div><h4>使用场景</h4><p>切换话题 · 重置上下文 · 多任务并行 · 测试不同 Prompt</p></div></div>
-        <div class="feat-card"><div class="feat-icon" style="width:36px;height:36px;font-size:18px">⚙️</div><div><h4>使用技巧</h4><p>每任务开新聊天 · 标题注明主题 · 开始时说明背景</p></div></div>
-      </div>
-      <div class="card mt-m card-accent" style="padding:14px 18px">
-        <p class="dim" style="margin:0;font-size:13px"><b style="color:var(--cy-yellow)">⚠ 避免：</b>一个聊天混杂太多话题 · 对话过长不清理</p>
-      </div>
+  <!-- 01 New Chat -->
+  <section class="slide" data-title="New Chat">
+    <p class="kicker"><span class="sec-num">01</span>New Chat · 新建聊天</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">创建全新对话，每次都是「从零开始」</h2>
+    <p class="lede" style="font-size:16px">独立上下文环境，不受之前对话影响</p>
+    <div class="grid g2 mt-l anim-stagger-list" data-anim-target>
+      <div class="feat-card"><div class="feat-icon">💡</div><div><h4>使用场景</h4><p>切换话题 · 重置过长上下文 · 多任务并行 · 测试不同 Prompt</p></div></div>
+      <div class="feat-card"><div class="feat-icon">⚙️</div><div><h4>使用技巧</h4><p>每任务开新聊天 · 标题注明主题 · 开始时说明背景信息</p></div></div>
     </div>
+    <div class="card mt-m card-accent" style="padding:16px 20px"><p class="dim" style="margin:0;font-size:14px"><b style="color:var(--cy-yellow)">⚠ 避免：</b>一个聊天混杂太多不相关话题 · 对话过长不清理</p></div>
     <div class="deck-footer"><span class="mono dim2">01 · new-chat</span><span class="slide-number" data-current="2" data-total="12"></span></div>
-    <div class="notes">New Chat 是最基础的功能——每次新建对话都是一张白纸。适合切换话题、重置过长的上下文，或者并行处理多个不相关项目。记得给聊天起个好标题，比如「Python 数据分析-客户画像」。</div>
+    <div class="notes">New Chat 是最基础的功能。适合切换话题、重置上下文、并行处理多个项目。记得给聊天起好标题。</div>
   </section>
 
-  <!-- 03 Search -->
-  <section class="slide with-nav" data-title="Search">
-    <aside class="sidebar">
-      <div class="brand">Claude<span class="brand-sub">功能全景 V1.0</span></div>
-      <h5 class="nav-title">目录 · Contents</h5>
-      <ul class="nav-list">
-        <li class="nav-item done"><span class="num">01</span><span class="label">New Chat</span><span class="sub">新建聊天</span></li>
-        <li class="nav-item current"><span class="num">02</span><span class="label">Search</span><span class="sub">搜索</span></li>
-        <li class="nav-item"><span class="num">03</span><span class="label">Chats</span><span class="sub">聊天历史</span></li>
-        <li class="nav-item"><span class="num">04</span><span class="label">Projects</span><span class="sub">项目</span><span class="star">★★★</span></li>
-        <li class="nav-item"><span class="num">05</span><span class="label">Artifacts</span><span class="sub">工件产物</span><span class="star">★★★</span></li>
-        <li class="nav-item"><span class="num">06</span><span class="label">Code</span><span class="sub">终端编程</span><span class="star">★★★</span></li>
-        <li class="nav-item"><span class="num">07</span><span class="label">Customize</span><span class="sub">自定义</span></li>
-        <li class="nav-item"><span class="num">08</span><span class="label">Design</span><span class="sub">视觉设计</span><span class="star">★★</span></li>
-        <li class="nav-item"><span class="num">09</span><span class="label">Workflows</span><span class="sub">联动案例</span></li>
-        <li class="nav-item"><span class="num">10</span><span class="label">Compare</span><span class="sub">功能对比</span></li>
-        <li class="nav-item"><span class="num">11</span><span class="label">Best Practice</span><span class="sub">最佳实践</span></li>
-      </ul>
-      <div class="sidebar-footer"><span class="cy-pill">实用</span></div>
-    </aside>
-    <div class="main">
-      <div class="slide-head"><div class="feat-icon">🔍</div><span class="badge-star">知识检索</span></div>
-      <p class="kicker">02 · Search</p>
-      <h2 class="h2">搜索 — 个人知识库</h2>
-      <p class="lede" style="font-size:15px">全文搜索历史对话，快速定位代码、方案与决策记录</p>
-      <div class="grid g2 mt-m anim-stagger-list" data-anim-target>
-        <div class="feat-card"><div class="feat-icon" style="width:36px;height:36px;font-size:18px">📌</div><div><h4>典型用途</h4><p>找回代码片段 · 查找技术方案 · 复用 API 处理方案</p></div></div>
-        <div class="feat-card"><div class="feat-icon" style="width:36px;height:36px;font-size:18px">🎯</div><div><h4>搜索策略</h4><p>用具体关键词 · 结合日期范围 · 搜格式如 <code>def </code></p></div></div>
-      </div>
-      <div class="pill-row mt-m"><span class="cy-pill">React useEffect</span><span class="cy-pill pink">docker compose</span><span class="cy-pill green">技术方案选择</span></div>
+  <!-- 02 Search -->
+  <section class="slide" data-title="Search">
+    <p class="kicker"><span class="sec-num">02</span>Search · 搜索</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">全文搜索历史对话，打造个人知识库</h2>
+    <p class="lede" style="font-size:16px">快速定位曾经讨论过的内容、代码与方案</p>
+    <div class="grid g2 mt-l anim-stagger-list" data-anim-target>
+      <div class="feat-card"><div class="feat-icon">📌</div><div><h4>典型用途</h4><p>找回代码片段 · 查找技术决策 · 复用 API 处理方案 · 知识管理</p></div></div>
+      <div class="feat-card"><div class="feat-icon">🎯</div><div><h4>搜索策略</h4><p>用具体关键词（如 React useEffect）· 结合日期范围 · 搜特定格式如 def </p></div></div>
     </div>
+    <div class="pill-row mt-l"><span class="cy-pill">React useEffect</span><span class="cy-pill pink">docker compose</span><span class="cy-pill green">技术方案选择</span></div>
     <div class="deck-footer"><span class="mono dim2">02 · search</span><span class="slide-number" data-current="3" data-total="12"></span></div>
-    <div class="notes">Search 让你把和 Claude 的所有对话变成可检索的知识库。比如搜「React useEffect」找之前的代码，或搜「技术方案选择」找回决策记录。关键是使用具体关键词，而不是泛泛的「代码」。</div>
+    <div class="notes">Search 让对话变成可检索的知识库。使用具体关键词，而不是泛泛搜「代码」。</div>
   </section>
 
-  <!-- 04 Chats -->
-  <section class="slide with-nav" data-title="Chats">
-    <aside class="sidebar">
-      <div class="brand">Claude<span class="brand-sub">功能全景 V1.0</span></div>
-      <h5 class="nav-title">目录 · Contents</h5>
-      <ul class="nav-list">
-        <li class="nav-item done"><span class="num">01</span><span class="label">New Chat</span><span class="sub">新建聊天</span></li>
-        <li class="nav-item done"><span class="num">02</span><span class="label">Search</span><span class="sub">搜索</span></li>
-        <li class="nav-item current"><span class="num">03</span><span class="label">Chats</span><span class="sub">聊天历史</span></li>
-        <li class="nav-item"><span class="num">04</span><span class="label">Projects</span><span class="sub">项目</span><span class="star">★★★</span></li>
-        <li class="nav-item"><span class="num">05</span><span class="label">Artifacts</span><span class="sub">工件产物</span><span class="star">★★★</span></li>
-        <li class="nav-item"><span class="num">06</span><span class="label">Code</span><span class="sub">终端编程</span><span class="star">★★★</span></li>
-        <li class="nav-item"><span class="num">07</span><span class="label">Customize</span><span class="sub">自定义</span></li>
-        <li class="nav-item"><span class="num">08</span><span class="label">Design</span><span class="sub">视觉设计</span><span class="star">★★</span></li>
-        <li class="nav-item"><span class="num">09</span><span class="label">Workflows</span><span class="sub">联动案例</span></li>
-        <li class="nav-item"><span class="num">10</span><span class="label">Compare</span><span class="sub">功能对比</span></li>
-        <li class="nav-item"><span class="num">11</span><span class="label">Best Practice</span><span class="sub">最佳实践</span></li>
-      </ul>
-      <div class="sidebar-footer"><span class="cy-pill">基础</span></div>
-    </aside>
-    <div class="main">
-      <div class="slide-head"><div class="feat-icon">📋</div></div>
-      <p class="kicker">03 · Chats</p>
-      <h2 class="h2">聊天历史 — 对话管理</h2>
-      <p class="lede" style="font-size:15px">查看、重命名、归档、删除所有对话，延续未完成任务</p>
-      <div class="grid g2 mt-m anim-stagger-list" data-anim-target>
-        <div class="card card-accent" style="padding:16px"><h4>💡 使用场景</h4><ul class="dim" style="margin:6px 0 0;padding-left:16px;font-size:13px;line-height:1.7"><li>项目追溯与上下文延续</li><li>清理无用、整理重要对话</li><li>复习学习记录</li></ul></div>
-        <div class="card card-accent" style="padding:16px"><h4>📝 命名规范</h4><ul class="dim" style="margin:6px 0 0;padding-left:16px;font-size:13px;line-height:1.7"><li>2024-Q1-财报分析</li><li>【重要】客户A需求</li><li>产品PRD-v2.0讨论</li></ul></div>
-      </div>
+  <!-- 03 Chats -->
+  <section class="slide" data-title="Chats">
+    <p class="kicker"><span class="sec-num">03</span>Chats · 聊天历史</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">查看与管理所有对话记录</h2>
+    <p class="lede" style="font-size:16px">重命名、归档、删除 — 延续未完成任务</p>
+    <div class="grid g2 mt-l anim-stagger-list" data-anim-target>
+      <div class="card card-accent" style="padding:20px"><h4>💡 使用场景</h4><ul class="dim" style="margin:8px 0 0;padding-left:18px;line-height:1.85;font-size:14px"><li>项目追溯与上下文延续</li><li>清理无用、整理重要对话</li><li>复习学习记录</li></ul></div>
+      <div class="card card-accent" style="padding:20px"><h4>📝 命名规范</h4><ul class="dim" style="margin:8px 0 0;padding-left:18px;line-height:1.85;font-size:14px"><li>2024-Q1-财报分析</li><li>【重要】客户A需求</li><li>产品PRD-v2.0讨论</li></ul></div>
     </div>
     <div class="deck-footer"><span class="mono dim2">03 · chats</span><span class="slide-number" data-current="4" data-total="12"></span></div>
-    <div class="notes">Chats 是对话管理中心。定期重命名、加前缀标记，按项目分组。好的命名习惯能让 Search 更高效——这是知识管理的基础。</div>
+    <div class="notes">Chats 是对话管理中心。好的命名习惯让 Search 更高效。</div>
   </section>
 
-  <!-- 05 Projects -->
-  <section class="slide with-nav" data-title="Projects">
-    <aside class="sidebar">
-      <div class="brand">Claude<span class="brand-sub">功能全景 V1.0</span></div>
-      <h5 class="nav-title">目录 · Contents</h5>
-      <ul class="nav-list">
-        <li class="nav-item done"><span class="num">01</span><span class="label">New Chat</span><span class="sub">新建聊天</span></li>
-        <li class="nav-item done"><span class="num">02</span><span class="label">Search</span><span class="sub">搜索</span></li>
-        <li class="nav-item done"><span class="num">03</span><span class="label">Chats</span><span class="sub">聊天历史</span></li>
-        <li class="nav-item current"><span class="num">04</span><span class="label">Projects</span><span class="sub">项目</span><span class="star">★★★</span></li>
-        <li class="nav-item"><span class="num">05</span><span class="label">Artifacts</span><span class="sub">工件产物</span><span class="star">★★★</span></li>
-        <li class="nav-item"><span class="num">06</span><span class="label">Code</span><span class="sub">终端编程</span><span class="star">★★★</span></li>
-        <li class="nav-item"><span class="num">07</span><span class="label">Customize</span><span class="sub">自定义</span></li>
-        <li class="nav-item"><span class="num">08</span><span class="label">Design</span><span class="sub">视觉设计</span><span class="star">★★</span></li>
-        <li class="nav-item"><span class="num">09</span><span class="label">Workflows</span><span class="sub">联动案例</span></li>
-        <li class="nav-item"><span class="num">10</span><span class="label">Compare</span><span class="sub">功能对比</span></li>
-        <li class="nav-item"><span class="num">11</span><span class="label">Best Practice</span><span class="sub">最佳实践</span></li>
-      </ul>
-      <div class="sidebar-footer"><span class="cy-pill pink">核心 ★★★</span></div>
-    </aside>
-    <div class="main">
-      <div class="slide-head"><div class="feat-icon">📁</div><span class="badge-star">★★★ 核心生产力</span></div>
-      <p class="kicker">04 · Projects</p>
-      <h2 class="h2">Projects — 专属工作空间</h2>
-      <p class="lede" style="font-size:15px">知识库 + 自定义指令 + 跨会话记忆</p>
-      <div class="grid g3 mt-m anim-stagger-list" data-anim-target>
-        <div class="feat-card"><div class="feat-icon" style="width:36px;height:36px;font-size:18px">📄</div><div><h4>独立知识库</h4><p>PDF · 代码 · 图片多格式上传</p></div></div>
-        <div class="feat-card"><div class="feat-icon" style="width:36px;height:36px;font-size:18px">⚙️</div><div><h4>自定义指令</h4><p>角色规范全局生效</p></div></div>
-        <div class="feat-card"><div class="feat-icon" style="width:36px;height:36px;font-size:18px">🧠</div><div><h4>上下文记忆</h4><p>跨会话保持项目背景</p></div></div>
-      </div>
-      <div class="grid g2 mt-s anim-stagger-list" data-anim-target>
-        <div class="card card-accent" style="padding:14px"><h4 style="font-size:13px">典型场景</h4><p class="dim" style="margin:4px 0 0;font-size:12px">软件开发 · 学术研究 · 企业知识库</p></div>
-        <div class="card card-accent" style="padding:14px"><h4 style="font-size:13px">管理技巧</h4><p class="dim" style="margin:4px 0 0;font-size:12px">先传核心文档 · 定期更新 · 删除过期文件</p></div>
-      </div>
+  <!-- 04 Projects -->
+  <section class="slide" data-title="Projects">
+    <div class="slide-head"><div class="feat-icon">📁</div><span class="badge-star">★★★ 核心生产力</span></div>
+    <p class="kicker"><span class="sec-num">04</span>Projects · 项目</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">专属工作空间 — 知识库 + 指令 + 记忆</h2>
+    <div class="grid g3 mt-l anim-stagger-list" data-anim-target>
+      <div class="feat-card"><div class="feat-icon" style="width:40px;height:40px;font-size:20px">📄</div><div><h4>独立知识库</h4><p>PDF · DOCX · 代码 · 图片多格式上传</p></div></div>
+      <div class="feat-card"><div class="feat-icon" style="width:40px;height:40px;font-size:20px">⚙️</div><div><h4>自定义指令</h4><p>角色与规范，项目内所有对话自动应用</p></div></div>
+      <div class="feat-card"><div class="feat-icon" style="width:40px;height:40px;font-size:20px">🧠</div><div><h4>上下文记忆</h4><p>跨会话保持项目背景，无需重复说明</p></div></div>
+    </div>
+    <div class="grid g2 mt-m anim-stagger-list" data-anim-target>
+      <div class="card card-accent" style="padding:18px"><h4>典型场景</h4><p class="dim" style="margin:6px 0 0;font-size:14px">软件开发 · 学术研究 · 企业知识库</p></div>
+      <div class="card card-accent" style="padding:18px"><h4>管理技巧</h4><p class="dim" style="margin:6px 0 0;font-size:14px">先传核心文档 · 定期更新 · 删除过期文件</p></div>
     </div>
     <div class="deck-footer"><span class="mono dim2">04 · projects</span><span class="slide-number" data-current="5" data-total="12"></span></div>
-    <div class="notes">Projects 是第一个核心功能。创建工作空间，上传 API 规范和需求文档，设置「你是资深全栈工程师」指令——Claude 自动理解项目背景，无需每次重复说明。</div>
+    <div class="notes">Projects 是第一个核心功能。上传 API 规范，设置角色指令，Claude 自动理解项目背景。</div>
   </section>
 
-  <!-- 06 Artifacts -->
-  <section class="slide with-nav" data-title="Artifacts">
-    <aside class="sidebar">
-      <div class="brand">Claude<span class="brand-sub">功能全景 V1.0</span></div>
-      <h5 class="nav-title">目录 · Contents</h5>
-      <ul class="nav-list">
-        <li class="nav-item done"><span class="num">01</span><span class="label">New Chat</span><span class="sub">新建聊天</span></li>
-        <li class="nav-item done"><span class="num">02</span><span class="label">Search</span><span class="sub">搜索</span></li>
-        <li class="nav-item done"><span class="num">03</span><span class="label">Chats</span><span class="sub">聊天历史</span></li>
-        <li class="nav-item done"><span class="num">04</span><span class="label">Projects</span><span class="sub">项目</span><span class="star">★★★</span></li>
-        <li class="nav-item current"><span class="num">05</span><span class="label">Artifacts</span><span class="sub">工件产物</span><span class="star">★★★</span></li>
-        <li class="nav-item"><span class="num">06</span><span class="label">Code</span><span class="sub">终端编程</span><span class="star">★★★</span></li>
-        <li class="nav-item"><span class="num">07</span><span class="label">Customize</span><span class="sub">自定义</span></li>
-        <li class="nav-item"><span class="num">08</span><span class="label">Design</span><span class="sub">视觉设计</span><span class="star">★★</span></li>
-        <li class="nav-item"><span class="num">09</span><span class="label">Workflows</span><span class="sub">联动案例</span></li>
-        <li class="nav-item"><span class="num">10</span><span class="label">Compare</span><span class="sub">功能对比</span></li>
-        <li class="nav-item"><span class="num">11</span><span class="label">Best Practice</span><span class="sub">最佳实践</span></li>
-      </ul>
-      <div class="sidebar-footer"><span class="cy-pill pink">核心 ★★★</span></div>
-    </aside>
-    <div class="main">
-      <div class="slide-head"><div class="feat-icon">◈</div><span class="badge-star">★★★ 可视化交互</span></div>
-      <p class="kicker">05 · Artifacts</p>
-      <h2 class="h2">Artifacts — 即时可视化</h2>
-      <p class="lede" style="font-size:15px">独立窗口实时预览 · 即时修改 · 一键下载</p>
-      <div class="grid g2 mt-m anim-stagger-list" data-anim-target>
-        <div class="feat-card"><div class="feat-icon" style="width:36px;height:36px;font-size:18px">🌐</div><div><h4>网页应用</h4><p>HTML/CSS/JS 可交互原型</p><div class="pill-row"><span class="cy-pill">待办 App</span></div></div></div>
-        <div class="feat-card"><div class="feat-icon" style="width:36px;height:36px;font-size:18px">📊</div><div><h4>数据图表</h4><p>D3.js / Chart.js 交互可视化</p></div></div>
-        <div class="feat-card"><div class="feat-icon" style="width:36px;height:36px;font-size:18px">📐</div><div><h4>SVG 图形</h4><p>流程图 · 架构图 · 示意图</p></div></div>
-        <div class="feat-card"><div class="feat-icon" style="width:36px;height:36px;font-size:18px">📄</div><div><h4>结构化文档</h4><p>Markdown · API 文档 · 技术规范</p></div></div>
-      </div>
-      <div class="card mt-s" style="padding:12px 16px;border-left:3px solid var(--cy-pink)"><p class="dim" style="margin:0;font-size:12px"><b style="color:var(--cy-cyan)">迭代：</b>基础版 → 功能扩展 → 交互增强 → 视觉升级</p></div>
+  <!-- 05 Artifacts -->
+  <section class="slide" data-title="Artifacts">
+    <div class="slide-head"><div class="feat-icon">◈</div><span class="badge-star">★★★ 可视化交互</span></div>
+    <p class="kicker"><span class="sec-num">05</span>Artifacts · 工件产物</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">即时可视化 — 预览 · 修改 · 下载</h2>
+    <div class="grid g2 mt-l anim-stagger-list" data-anim-target>
+      <div class="feat-card"><div class="feat-icon" style="width:40px;height:40px;font-size:20px">🌐</div><div><h4>网页应用</h4><p>HTML/CSS/JS 可交互原型，右侧实时预览</p><div class="pill-row"><span class="cy-pill">待办 App</span><span class="cy-pill pink">登录页</span></div></div></div>
+      <div class="feat-card"><div class="feat-icon" style="width:40px;height:40px;font-size:20px">📊</div><div><h4>数据图表</h4><p>D3.js / Chart.js 交互可视化，悬停缩放筛选</p></div></div>
+      <div class="feat-card"><div class="feat-icon" style="width:40px;height:40px;font-size:20px">📐</div><div><h4>SVG 图形</h4><p>流程图 · 架构图 · 示意图，即时渲染可下载</p></div></div>
+      <div class="feat-card"><div class="feat-icon" style="width:40px;height:40px;font-size:20px">📄</div><div><h4>结构化文档</h4><p>Markdown · API 文档 · 技术规范</p></div></div>
     </div>
+    <div class="card mt-m" style="padding:14px 18px;border-left:3px solid var(--cy-pink)"><p class="dim" style="margin:0;font-size:14px"><b style="color:var(--cy-cyan)">迭代开发：</b>基础版 → 功能扩展 → 交互增强 → 视觉升级</p></div>
     <div class="deck-footer"><span class="mono dim2">05 · artifacts</span><span class="slide-number" data-current="6" data-total="12"></span></div>
-    <div class="notes">Artifacts 是可视化神器——说「创建待办应用」，右侧立刻可测试。不满意继续改，每次即时生效，最后可下载 HTML 或部署 Vercel。</div>
+    <div class="notes">Artifacts 说「创建待办应用」，右侧立刻可测试。每次修改即时生效，可下载或部署 Vercel。</div>
   </section>
 
-  <!-- 07 Code -->
-  <section class="slide with-nav" data-title="Code">
-    <aside class="sidebar">
-      <div class="brand">Claude<span class="brand-sub">功能全景 V1.0</span></div>
-      <h5 class="nav-title">目录 · Contents</h5>
-      <ul class="nav-list">
-        <li class="nav-item done"><span class="num">01</span><span class="label">New Chat</span><span class="sub">新建聊天</span></li>
-        <li class="nav-item done"><span class="num">02</span><span class="label">Search</span><span class="sub">搜索</span></li>
-        <li class="nav-item done"><span class="num">03</span><span class="label">Chats</span><span class="sub">聊天历史</span></li>
-        <li class="nav-item done"><span class="num">04</span><span class="label">Projects</span><span class="sub">项目</span><span class="star">★★★</span></li>
-        <li class="nav-item done"><span class="num">05</span><span class="label">Artifacts</span><span class="sub">工件产物</span><span class="star">★★★</span></li>
-        <li class="nav-item current"><span class="num">06</span><span class="label">Code</span><span class="sub">终端编程</span><span class="star">★★★</span></li>
-        <li class="nav-item"><span class="num">07</span><span class="label">Customize</span><span class="sub">自定义</span></li>
-        <li class="nav-item"><span class="num">08</span><span class="label">Design</span><span class="sub">视觉设计</span><span class="star">★★</span></li>
-        <li class="nav-item"><span class="num">09</span><span class="label">Workflows</span><span class="sub">联动案例</span></li>
-        <li class="nav-item"><span class="num">10</span><span class="label">Compare</span><span class="sub">功能对比</span></li>
-        <li class="nav-item"><span class="num">11</span><span class="label">Best Practice</span><span class="sub">最佳实践</span></li>
-      </ul>
-      <div class="sidebar-footer"><span class="cy-pill pink">核心 ★★★</span></div>
-    </aside>
-    <div class="main">
-      <div class="slide-head"><div class="feat-icon">⚡</div><span class="badge-star">★★★ 终端编程</span></div>
-      <p class="kicker">06 · Claude Code</p>
-      <h2 class="h2">Code — 终端级 AI 编程</h2>
-      <div class="grid g2 mt-m" style="gap:14px;align-items:start">
-        <div class="grid g3" style="gap:8px">
-          <div class="card card-accent" style="padding:12px"><div style="font-size:22px">🔧</div><h4 style="font-size:12px">重构</h4><p class="dim" style="font-size:11px;margin:4px 0 0">跨文件修改 + git commit</p></div>
-          <div class="card card-accent" style="padding:12px"><div style="font-size:22px">🐛</div><h4 style="font-size:12px">Bug 修复</h4><p class="dim" style="font-size:11px;margin:4px 0 0">跑测试 → 定位 → 验证</p></div>
-          <div class="card card-accent" style="padding:12px"><div style="font-size:22px">🚀</div><h4 style="font-size:12px">DevOps</h4><p class="dim" style="font-size:11px;margin:4px 0 0">Docker + CI/CD 自动化</p></div>
-        </div>
-        <div>
-          <div class="terminal"><div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span>claude</span></div>
-          <pre style="margin:0;padding:14px;font-size:11px;line-height:1.65;color:var(--text-2);font-family:'JetBrains Mono',monospace"><span style="color:var(--cy-green)">$</span> claude /review src/auth.ts
+  <!-- 06 Code -->
+  <section class="slide" data-title="Code">
+    <div class="slide-head"><div class="feat-icon">⚡</div><span class="badge-star">★★★ 终端编程</span></div>
+    <p class="kicker"><span class="sec-num">06</span>Code · Claude Code</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">终端级 AI 编程助手</h2>
+    <p class="lede" style="font-size:16px">操作本地文件 · 执行 Shell · 跨文件修改 · 自动测试部署</p>
+    <div class="grid g3 mt-l anim-stagger-list" data-anim-target>
+      <div class="card card-accent" style="padding:18px"><div style="font-size:26px;margin-bottom:8px">🔧</div><h4>代码库重构</h4><p class="dim" style="font-size:13px;margin-top:6px">扫描架构 → 跨文件修改 → 运行测试 → git commit</p></div>
+      <div class="card card-accent" style="padding:18px"><div style="font-size:26px;margin-bottom:8px">🐛</div><h4>Bug 修复</h4><p class="dim" style="font-size:13px;margin-top:6px">执行测试 → 分析日志 → 定位修复 → 验证通过</p></div>
+      <div class="card card-accent" style="padding:18px"><div style="font-size:26px;margin-bottom:8px">🚀</div><h4>DevOps 自动化</h4><p class="dim" style="font-size:13px;margin-top:6px">Docker 容器化 → CI/CD → 部署脚本</p></div>
+    </div>
+    <div class="grid g2 mt-m anim-stagger-list" data-anim-target>
+      <div class="terminal"><div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span>claude · terminal</span></div>
+      <pre style="margin:0;padding:18px 22px;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.7;color:var(--text-2)"><span style="color:var(--cy-green)">$</span> claude /review src/auth.ts
 <span style="color:var(--cy-cyan)">$</span> claude "REST → GraphQL"
 <span style="color:var(--cy-cyan)">$</span> claude "Docker + CI/CD"</pre></div>
-          <div class="pill-row mt-s"><span class="cy-pill">/review</span><span class="cy-pill pink">Hooks</span><span class="cy-pill green">MCP</span></div>
-        </div>
+      <div class="stack" style="gap:10px">
+        <div class="feat-card" style="padding:14px 16px"><div class="feat-icon" style="width:36px;height:36px;font-size:16px">/</div><div><h4 style="font-size:13px">斜杠命令</h4><p style="font-size:13px">/review · /test · /deploy</p></div></div>
+        <div class="feat-card" style="padding:14px 16px"><div class="feat-icon" style="width:36px;height:36px;font-size:16px">🔗</div><div><h4 style="font-size:13px">MCP 集成</h4><p style="font-size:13px">GitHub · Slack · Jira · 数据库</p></div></div>
       </div>
     </div>
     <div class="deck-footer"><span class="mono dim2">06 · code</span><span class="slide-number" data-current="7" data-total="12"></span></div>
-    <div class="notes">Claude Code 运行在终端，直接操作文件系统、执行 shell、跨文件修改。支持斜杠命令、Hooks 自动化、MCP 连接 GitHub/Jira/数据库。</div>
+    <div class="notes">Claude Code 直接操作文件系统、跑 shell、跨文件修改。支持斜杠命令和 MCP 集成。</div>
   </section>
 
-  <!-- 08 Customize -->
-  <section class="slide with-nav" data-title="Customize">
-    <aside class="sidebar">
-      <div class="brand">Claude<span class="brand-sub">功能全景 V1.0</span></div>
-      <h5 class="nav-title">目录 · Contents</h5>
-      <ul class="nav-list">
-        <li class="nav-item done"><span class="num">01</span><span class="label">New Chat</span><span class="sub">新建聊天</span></li>
-        <li class="nav-item done"><span class="num">02</span><span class="label">Search</span><span class="sub">搜索</span></li>
-        <li class="nav-item done"><span class="num">03</span><span class="label">Chats</span><span class="sub">聊天历史</span></li>
-        <li class="nav-item done"><span class="num">04</span><span class="label">Projects</span><span class="sub">项目</span><span class="star">★★★</span></li>
-        <li class="nav-item done"><span class="num">05</span><span class="label">Artifacts</span><span class="sub">工件产物</span><span class="star">★★★</span></li>
-        <li class="nav-item done"><span class="num">06</span><span class="label">Code</span><span class="sub">终端编程</span><span class="star">★★★</span></li>
-        <li class="nav-item current"><span class="num">07</span><span class="label">Customize</span><span class="sub">自定义</span></li>
-        <li class="nav-item"><span class="num">08</span><span class="label">Design</span><span class="sub">视觉设计</span><span class="star">★★</span></li>
-        <li class="nav-item"><span class="num">09</span><span class="label">Workflows</span><span class="sub">联动案例</span></li>
-        <li class="nav-item"><span class="num">10</span><span class="label">Compare</span><span class="sub">功能对比</span></li>
-        <li class="nav-item"><span class="num">11</span><span class="label">Best Practice</span><span class="sub">最佳实践</span></li>
-      </ul>
-      <div class="sidebar-footer"><span class="cy-pill">实用</span></div>
-    </aside>
-    <div class="main">
-      <div class="slide-head"><div class="feat-icon">🎨</div></div>
-      <p class="kicker">07 · Customize</p>
-      <h2 class="h2">自定义 — 全局个性化</h2>
-      <div class="grid g3 mt-m anim-stagger-list" data-anim-target>
-        <div class="card card-accent" style="padding:14px"><h4 style="font-size:13px">正式</h4><p class="dim" style="font-size:12px;margin:4px 0 0">严谨专业 · 商务沟通</p></div>
-        <div class="card card-accent" style="padding:14px"><h4 style="font-size:13px">随意</h4><p class="dim" style="font-size:12px;margin:4px 0 0">轻松创意 · 头脑风暴</p></div>
-        <div class="card card-accent" style="padding:14px"><h4 style="font-size:13px">技术</h4><p class="dim" style="font-size:12px;margin:4px 0 0">代码优先 · 编程开发</p></div>
-      </div>
-      <div class="card mt-m" style="padding:14px 18px"><h4 style="font-size:13px">默认参数</h4><p class="dim" style="margin:4px 0 0;font-size:12px">输出长度 · 代码风格 · 响应速度 · 数据保留 · 隐私设置</p></div>
+  <!-- 07 Customize -->
+  <section class="slide" data-title="Customize">
+    <p class="kicker"><span class="sec-num">07</span>Customize · 自定义</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">全局个性化设置</h2>
+    <p class="lede" style="font-size:16px">配置 Claude 的行为模式与默认偏好</p>
+    <div class="grid g3 mt-l anim-stagger-list" data-anim-target>
+      <div class="card card-accent" style="padding:20px"><h4>正式</h4><p class="dim" style="font-size:14px;margin-top:8px">语言严谨专业 · 商务沟通</p></div>
+      <div class="card card-accent" style="padding:20px"><h4>随意</h4><p class="dim" style="font-size:14px;margin-top:8px">语言轻松创意 · 头脑风暴</p></div>
+      <div class="card card-accent" style="padding:20px"><h4>技术</h4><p class="dim" style="font-size:14px;margin-top:8px">代码优先 · 编程开发</p></div>
     </div>
+    <div class="card mt-m" style="padding:18px 22px"><h4>默认参数</h4><p class="dim" style="margin:6px 0 0;font-size:14px">输出长度 · 代码风格 · 响应速度 · 数据保留 · 隐私设置</p></div>
     <div class="deck-footer"><span class="mono dim2">07 · customize</span><span class="slide-number" data-current="8" data-total="12"></span></div>
-    <div class="notes">Customize 配置 Claude 的全局行为——回复风格（正式/随意/技术）、输出长度、代码偏好、隐私设置等。一次配置，全局生效。</div>
+    <div class="notes">Customize 配置全局回复风格、输出长度、代码偏好和隐私设置。</div>
   </section>
 
-  <!-- 09 Design -->
-  <section class="slide with-nav" data-title="Design">
-    <aside class="sidebar">
-      <div class="brand">Claude<span class="brand-sub">功能全景 V1.0</span></div>
-      <h5 class="nav-title">目录 · Contents</h5>
-      <ul class="nav-list">
-        <li class="nav-item done"><span class="num">01</span><span class="label">New Chat</span><span class="sub">新建聊天</span></li>
-        <li class="nav-item done"><span class="num">02</span><span class="label">Search</span><span class="sub">搜索</span></li>
-        <li class="nav-item done"><span class="num">03</span><span class="label">Chats</span><span class="sub">聊天历史</span></li>
-        <li class="nav-item done"><span class="num">04</span><span class="label">Projects</span><span class="sub">项目</span><span class="star">★★★</span></li>
-        <li class="nav-item done"><span class="num">05</span><span class="label">Artifacts</span><span class="sub">工件产物</span><span class="star">★★★</span></li>
-        <li class="nav-item done"><span class="num">06</span><span class="label">Code</span><span class="sub">终端编程</span><span class="star">★★★</span></li>
-        <li class="nav-item done"><span class="num">07</span><span class="label">Customize</span><span class="sub">自定义</span></li>
-        <li class="nav-item current"><span class="num">08</span><span class="label">Design</span><span class="sub">视觉设计</span><span class="star">★★</span></li>
-        <li class="nav-item"><span class="num">09</span><span class="label">Workflows</span><span class="sub">联动案例</span></li>
-        <li class="nav-item"><span class="num">10</span><span class="label">Compare</span><span class="sub">功能对比</span></li>
-        <li class="nav-item"><span class="num">11</span><span class="label">Best Practice</span><span class="sub">最佳实践</span></li>
-      </ul>
-      <div class="sidebar-footer"><span class="cy-pill">重要 ★★</span></div>
-    </aside>
-    <div class="main">
-      <div class="slide-head"><div class="feat-icon">🎨</div><span class="badge-star">★★ 视觉创作</span></div>
-      <p class="kicker">08 · Design</p>
-      <h2 class="h2">Design — 对话式视觉设计</h2>
-      <div class="grid g3 mt-m anim-stagger-list" data-anim-target>
-        <div class="feat-card"><div class="feat-icon" style="width:36px;height:36px;font-size:18px">📱</div><div><h4>产品原型</h4><p>APP 界面 · 多设备尺寸 · 交互动画</p></div></div>
-        <div class="feat-card"><div class="feat-icon" style="width:36px;height:36px;font-size:18px">📽️</div><div><h4>演示文稿</h4><p>统一风格 · 图表动画 · 导出 PPTX/PDF</p></div></div>
-        <div class="feat-card"><div class="feat-icon" style="width:36px;height:36px;font-size:18px">🌐</div><div><h4>营销落地页</h4><p>Hero · 功能卡片 · 价格表 · FAQ</p></div></div>
-      </div>
-      <div class="pill-row mt-m"><span class="cy-pill">响应式</span><span class="cy-pill pink">SEO</span><span class="cy-pill green">直接部署</span></div>
+  <!-- 08 Design -->
+  <section class="slide" data-title="Design">
+    <div class="slide-head"><div class="feat-icon">🎨</div><span class="badge-star">★★ 视觉创作</span></div>
+    <p class="kicker"><span class="sec-num">08</span>Design · 视觉设计</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">通过对话创建视觉设计</h2>
+    <div class="grid g3 mt-l anim-stagger-list" data-anim-target>
+      <div class="feat-card"><div class="feat-icon" style="width:40px;height:40px;font-size:20px">📱</div><div><h4>产品原型</h4><p>APP 界面 · 多设备尺寸 · 交互动画 · 导出 Figma</p></div></div>
+      <div class="feat-card"><div class="feat-icon" style="width:40px;height:40px;font-size:20px">📽️</div><div><h4>演示文稿</h4><p>统一风格 · 图表动画 · 导出 PPTX/PDF</p></div></div>
+      <div class="feat-card"><div class="feat-icon" style="width:40px;height:40px;font-size:20px">🌐</div><div><h4>营销落地页</h4><p>Hero · 功能卡片 · 价格表 · FAQ · 响应式</p></div></div>
     </div>
     <div class="deck-footer"><span class="mono dim2">08 · design</span><span class="slide-number" data-current="9" data-total="12"></span></div>
-    <div class="notes">Design 通过对话创建视觉设计——产品原型、PPT、营销落地页。支持响应式、动画效果，可导出 Figma/PNG 或直接部署代码。</div>
+    <div class="notes">Design 通过对话创建原型、PPT、落地页，支持响应式和直接部署。</div>
   </section>
 
-  <!-- 10 Workflows -->
-  <section class="slide with-nav" data-title="Workflows">
-    <aside class="sidebar">
-      <div class="brand">Claude<span class="brand-sub">功能全景 V1.0</span></div>
-      <h5 class="nav-title">目录 · Contents</h5>
-      <ul class="nav-list">
-        <li class="nav-item done"><span class="num">01</span><span class="label">New Chat</span><span class="sub">新建聊天</span></li>
-        <li class="nav-item done"><span class="num">02</span><span class="label">Search</span><span class="sub">搜索</span></li>
-        <li class="nav-item done"><span class="num">03</span><span class="label">Chats</span><span class="sub">聊天历史</span></li>
-        <li class="nav-item done"><span class="num">04</span><span class="label">Projects</span><span class="sub">项目</span><span class="star">★★★</span></li>
-        <li class="nav-item done"><span class="num">05</span><span class="label">Artifacts</span><span class="sub">工件产物</span><span class="star">★★★</span></li>
-        <li class="nav-item done"><span class="num">06</span><span class="label">Code</span><span class="sub">终端编程</span><span class="star">★★★</span></li>
-        <li class="nav-item done"><span class="num">07</span><span class="label">Customize</span><span class="sub">自定义</span></li>
-        <li class="nav-item done"><span class="num">08</span><span class="label">Design</span><span class="sub">视觉设计</span><span class="star">★★</span></li>
-        <li class="nav-item current"><span class="num">09</span><span class="label">Workflows</span><span class="sub">联动案例</span></li>
-        <li class="nav-item"><span class="num">10</span><span class="label">Compare</span><span class="sub">功能对比</span></li>
-        <li class="nav-item"><span class="num">11</span><span class="label">Best Practice</span><span class="sub">最佳实践</span></li>
-      </ul>
-      <div class="sidebar-footer"><span class="cy-pill green">3 案例</span></div>
-    </aside>
-    <div class="main">
-      <p class="kicker">09 · 功能联动实战</p>
-      <h2 class="h2">多功能组合工作流</h2>
-      <div class="mt-m anim-stagger-list" data-anim-target>
-        <div class="workflow-step"><span class="step-num">1</span><div><b>Web 应用开发</b><p>Projects 需求 → Design 原型 → Artifacts 交互 → Code 开发部署</p></div></div>
-        <div class="workflow-step"><span class="step-num">2</span><div><b>数据分析项目</b><p>Projects 上传 CSV → Artifacts 图表 → Design 报告 PPT → Code 预测模型</p></div></div>
-        <div class="workflow-step"><span class="step-num">3</span><div><b>内容创作</b><p>Chats 选题 → Projects 素材 → 撰写正文 → Artifacts 配图 → 导出发布</p></div></div>
-      </div>
+  <!-- 09 Workflows -->
+  <section class="slide" data-title="Workflows">
+    <p class="kicker"><span class="sec-num">09</span>功能联动实战案例</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">多功能组合，实现完整工作流</h2>
+    <div class="mt-l anim-stagger-list" data-anim-target>
+      <div class="workflow-step"><span class="step-num">1</span><div><b>Web 应用开发</b><p>Projects 需求分析 → Design 原型 → Artifacts 交互 → Code 开发部署</p></div></div>
+      <div class="workflow-step"><span class="step-num">2</span><div><b>数据分析项目</b><p>Projects 上传 CSV → Artifacts 图表 → Design 报告 → Code 预测模型</p></div></div>
+      <div class="workflow-step"><span class="step-num">3</span><div><b>内容创作</b><p>Chats 选题 → Projects 素材 → 撰写正文 → Artifacts 配图 → 导出发布</p></div></div>
     </div>
     <div class="deck-footer"><span class="mono dim2">09 · workflows</span><span class="slide-number" data-current="10" data-total="12"></span></div>
-    <div class="notes">三个联动案例展示了如何把多个功能串起来——从零开发 Web 应用、数据分析、内容创作。关键是不同阶段选用最合适的工具。</div>
+    <div class="notes">三个联动案例展示如何串起多个功能——Web 开发、数据分析、内容创作。</div>
   </section>
 
-  <!-- 11 Compare -->
-  <section class="slide with-nav" data-title="Compare">
-    <aside class="sidebar">
-      <div class="brand">Claude<span class="brand-sub">功能全景 V1.0</span></div>
-      <h5 class="nav-title">目录 · Contents</h5>
-      <ul class="nav-list">
-        <li class="nav-item done"><span class="num">01</span><span class="label">New Chat</span><span class="sub">新建聊天</span></li>
-        <li class="nav-item done"><span class="num">02</span><span class="label">Search</span><span class="sub">搜索</span></li>
-        <li class="nav-item done"><span class="num">03</span><span class="label">Chats</span><span class="sub">聊天历史</span></li>
-        <li class="nav-item done"><span class="num">04</span><span class="label">Projects</span><span class="sub">项目</span><span class="star">★★★</span></li>
-        <li class="nav-item done"><span class="num">05</span><span class="label">Artifacts</span><span class="sub">工件产物</span><span class="star">★★★</span></li>
-        <li class="nav-item done"><span class="num">06</span><span class="label">Code</span><span class="sub">终端编程</span><span class="star">★★★</span></li>
-        <li class="nav-item done"><span class="num">07</span><span class="label">Customize</span><span class="sub">自定义</span></li>
-        <li class="nav-item done"><span class="num">08</span><span class="label">Design</span><span class="sub">视觉设计</span><span class="star">★★</span></li>
-        <li class="nav-item done"><span class="num">09</span><span class="label">Workflows</span><span class="sub">联动案例</span></li>
-        <li class="nav-item current"><span class="num">10</span><span class="label">Compare</span><span class="sub">功能对比</span></li>
-        <li class="nav-item"><span class="num">11</span><span class="label">Best Practice</span><span class="sub">最佳实践</span></li>
-      </ul>
-    </aside>
-    <div class="main">
-      <p class="kicker">10 · 功能对比总结</p>
-      <h2 class="h2">一表掌握各功能</h2>
-      <table class="mini-table mt-m">
-        <tr style="color:var(--text-3)"><td>New Chat / Chats</td><td style="text-align:right">基础 · 文本回复</td></tr>
-        <tr style="color:var(--text-2)"><td>Search / Customize</td><td style="text-align:right">实用 · 检索/配置</td></tr>
-        <tr style="color:var(--cy-cyan)"><td><b>Projects ★★★</b></td><td style="text-align:right"><b>核心 · 知识库+对话</b></td></tr>
-        <tr style="color:var(--cy-cyan)"><td><b>Artifacts ★★★</b></td><td style="text-align:right"><b>核心 · 可交互产物</b></td></tr>
-        <tr style="color:var(--cy-cyan)"><td><b>Code ★★★</b></td><td style="text-align:right"><b>核心 · 终端操作</b></td></tr>
-        <tr style="color:var(--text-2)"><td>Design ★★</td><td style="text-align:right">重要 · 原型/PPT/页面</td></tr>
-      </table>
-      <div class="grid g3 mt-m">
-        <div class="card card-accent" style="padding:12px;text-align:center"><h4 style="font-size:12px">短期</h4><p class="dim" style="font-size:11px;margin:4px 0 0">Chats</p></div>
-        <div class="card card-accent" style="padding:12px;text-align:center"><h4 style="font-size:12px">中期</h4><p class="dim" style="font-size:11px;margin:4px 0 0">Projects</p></div>
-        <div class="card card-accent" style="padding:12px;text-align:center"><h4 style="font-size:12px">永久</h4><p class="dim" style="font-size:11px;margin:4px 0 0">导出 · Notion</p></div>
-      </div>
+  <!-- 10 Compare -->
+  <section class="slide" data-title="Compare">
+    <p class="kicker"><span class="sec-num">10</span>功能对比总结</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">一表掌握各功能核心用途</h2>
+    <table class="mini-table mt-m">
+      <tr style="color:var(--text-3)"><td>New Chat / Chats</td><td style="text-align:right">基础 · 文本回复 · 所有人</td></tr>
+      <tr style="color:var(--text-2)"><td>Search / Customize</td><td style="text-align:right">实用 · 检索/配置</td></tr>
+      <tr style="color:var(--cy-cyan)"><td><b>Projects ★★★</b></td><td style="text-align:right"><b>核心 · 知识库 + 对话 · 专业人士</b></td></tr>
+      <tr style="color:var(--cy-cyan)"><td><b>Artifacts ★★★</b></td><td style="text-align:right"><b>核心 · 可交互产物 · 开发者/设计师</b></td></tr>
+      <tr style="color:var(--cy-cyan)"><td><b>Code ★★★</b></td><td style="text-align:right"><b>核心 · 终端操作 · 程序员</b></td></tr>
+      <tr style="color:var(--text-2)"><td>Design ★★</td><td style="text-align:right">重要 · 原型/PPT/页面</td></tr>
+    </table>
+    <div class="grid g3 mt-l">
+      <div class="card card-accent" style="padding:16px;text-align:center"><h4 style="font-size:13px">短期记忆</h4><p class="dim" style="font-size:13px;margin:6px 0 0">Chats</p></div>
+      <div class="card card-accent" style="padding:16px;text-align:center"><h4 style="font-size:13px">中期记忆</h4><p class="dim" style="font-size:13px;margin:6px 0 0">Projects</p></div>
+      <div class="card card-accent" style="padding:16px;text-align:center"><h4 style="font-size:13px">永久记忆</h4><p class="dim" style="font-size:13px;margin:6px 0 0">导出 · Notion · Obsidian</p></div>
     </div>
     <div class="deck-footer"><span class="mono dim2">10 · compare</span><span class="slide-number" data-current="11" data-total="12"></span></div>
-    <div class="notes">功能对比表一目了然——三大核心是 Projects、Artifacts、Code。知识管理策略：Chats 短期、Projects 中期、导出到 Notion/Obsidian 永久保存。</div>
+    <div class="notes">功能对比表和知识管理三层策略：Chats 短期、Projects 中期、导出永久保存。</div>
   </section>
 
-  <!-- 12 Best Practice -->
-  <section class="slide with-nav" data-title="Best Practice">
-    <aside class="sidebar">
-      <div class="brand">Claude<span class="brand-sub">功能全景 V1.0</span></div>
-      <h5 class="nav-title">目录 · Contents</h5>
-      <ul class="nav-list">
-        <li class="nav-item done"><span class="num">01</span><span class="label">New Chat</span><span class="sub">新建聊天</span></li>
-        <li class="nav-item done"><span class="num">02</span><span class="label">Search</span><span class="sub">搜索</span></li>
-        <li class="nav-item done"><span class="num">03</span><span class="label">Chats</span><span class="sub">聊天历史</span></li>
-        <li class="nav-item done"><span class="num">04</span><span class="label">Projects</span><span class="sub">项目</span><span class="star">★★★</span></li>
-        <li class="nav-item done"><span class="num">05</span><span class="label">Artifacts</span><span class="sub">工件产物</span><span class="star">★★★</span></li>
-        <li class="nav-item done"><span class="num">06</span><span class="label">Code</span><span class="sub">终端编程</span><span class="star">★★★</span></li>
-        <li class="nav-item done"><span class="num">07</span><span class="label">Customize</span><span class="sub">自定义</span></li>
-        <li class="nav-item done"><span class="num">08</span><span class="label">Design</span><span class="sub">视觉设计</span><span class="star">★★</span></li>
-        <li class="nav-item done"><span class="num">09</span><span class="label">Workflows</span><span class="sub">联动案例</span></li>
-        <li class="nav-item done"><span class="num">10</span><span class="label">Compare</span><span class="sub">功能对比</span></li>
-        <li class="nav-item current"><span class="num">11</span><span class="label">Best Practice</span><span class="sub">最佳实践</span></li>
-      </ul>
-    </aside>
-    <div class="main">
-      <p class="kicker">11 · 最佳实践</p>
-      <h2 class="h2">从聊天工具到<span class="gradient-text">协作伙伴</span></h2>
-      <div class="grid g2 mt-m anim-stagger-list" data-anim-target>
-        <div class="card card-accent" style="padding:14px"><h4 style="font-size:13px">🔄 每日工作流</h4><ul class="dim" style="margin:6px 0 0;padding-left:16px;font-size:12px;line-height:1.75"><li>早晨 · Projects 规划</li><li>工作中 · Chats 快问</li><li>创作 · Artifacts 原型</li><li>开发 · Code 调试</li><li>晚上 · Search 归档</li></ul></div>
-        <div class="card card-accent" style="padding:14px"><h4 style="font-size:13px">⚡ 效率技巧</h4><ul class="dim" style="margin:6px 0 0;padding-left:16px;font-size:12px;line-height:1.75"><li>创建项目模板</li><li>自定义指令减重复</li><li>Artifacts 快速验证</li><li>Code 自动化重复工作</li></ul></div>
-      </div>
-      <div class="quote-box mt-m"><p>"通过 Projects 提供上下文，通过 Code 真正帮你工作，通过 Artifacts 让创意立即可见——工作效率将产生质的飞跃。"</p></div>
+  <!-- 11 Best Practice -->
+  <section class="slide" data-title="Best Practice">
+    <p class="kicker"><span class="sec-num">11</span>最佳实践建议</p>
+    <h2 class="h2 anim-fade-up" data-anim="fade-up">从聊天工具到<span class="gradient-text">协作伙伴</span></h2>
+    <div class="grid g2 mt-l anim-stagger-list" data-anim-target>
+      <div class="card card-accent" style="padding:20px"><h4>🔄 每日工作流</h4><ul class="dim" style="margin:8px 0 0;padding-left:18px;line-height:1.9;font-size:14px"><li><b style="color:var(--text-1)">早晨</b> — Projects 规划</li><li><b style="color:var(--text-1)">工作中</b> — Chats 快问</li><li><b style="color:var(--text-1)">创作</b> — Artifacts 原型</li><li><b style="color:var(--text-1)">开发</b> — Code 调试</li><li><b style="color:var(--text-1)">晚上</b> — Search 归档</li></ul></div>
+      <div class="card card-accent" style="padding:20px"><h4>⚡ 效率技巧</h4><ul class="dim" style="margin:8px 0 0;padding-left:18px;line-height:1.9;font-size:14px"><li>创建项目模板</li><li>自定义指令减重复</li><li>Artifacts 快速验证想法</li><li>Code 自动化重复工作</li></ul></div>
     </div>
+    <div class="quote-box anim-fade-up" data-anim="fade-up"><p>"通过 Projects 提供上下文，通过 Code 真正帮你工作，通过 Artifacts 让创意立即可见——工作效率将产生质的飞跃。"</p></div>
     <div class="deck-footer"><span class="mono dim2">← → 翻页 · F 全屏 · S 演讲者模式</span><span class="slide-number" data-current="12" data-total="12"></span></div>
-    <div class="notes">最后总结：不要把 Claude 当聊天工具，而是专业协作伙伴。建立个人工作流，三大核心联动使用。谢谢大家！</div>
+    <div class="notes">总结：不要把 Claude 当聊天工具，而是专业协作伙伴。谢谢大家！</div>
   </section>
 
 </div>
